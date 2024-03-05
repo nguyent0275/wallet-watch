@@ -23,7 +23,6 @@ type Budget {
 type Expense {
   _id: ID
   name: String
-  date: Date
   cost: Int
   budget: Budget
   category: Category
@@ -32,15 +31,23 @@ type Expense {
 type Income {
   _id: ID
   name: String
-  date: Date
   amount: Int
   budget: Budget
   category: Category
 }
 
+type Auth {
+  token: ID
+  user: User
+}
+
 type Mutation {
   addUser(firstName: String!, lastName: String!, email: String!, password: String!): Auth
   login(email: String!, password: String!): Auth
+}
+
+type Query {
+  categories: [Category]
 }
 
 `;

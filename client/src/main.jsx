@@ -2,9 +2,11 @@ import ReactDOM from 'react-dom/client';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 
 import App from './App.jsx';
-import Home from './pages/Home';
-import Matchup from './pages/Matchup';
-import Vote from './pages/Vote';
+import Home from './pages/Home.jsx';
+import Login from './pages/Login.jsx'
+import Signup from './pages/Signup.jsx'
+import ViewBudget from './pages/ViewBudget.jsx';
+import ViewAllBudgets from './pages/ViewAllBudgets.jsx';
 import NotFound from './pages/NotFound';
 
 const router = createBrowserRouter([
@@ -17,12 +19,18 @@ const router = createBrowserRouter([
         index: true,
         element: <Home />
       }, {
-        path: '/matchup',
-        element: <Matchup />
+        path: '/login',
+        element: <Login />
       }, {
-        path: '/matchup/:id',
-        element: <Vote />
-      },
+        path: '/signup',
+        element: <Signup />
+      }, {
+        path: '/viewBudget',
+        element: <ViewBudget />
+      }, {
+        path: '/viewAllBudgets',
+        element: <ViewAllBudgets/>
+      }, 
     ],
   },
 ]);

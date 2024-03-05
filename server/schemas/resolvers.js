@@ -2,7 +2,11 @@ const { User, Budget, Category, Expense, Income } = require("../models");
 const { signToken, AuthenticationError } = require("../utils/auth");
 
 const resolvers = {
-  Query: {},
+  Query: {
+    categories: async () => {
+      return await Category.find();
+    },
+  },
   Mutation: {
     addUser: async (parent, args) => {
       const user = await User.create(args);
