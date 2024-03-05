@@ -1,0 +1,47 @@
+{
+  "short_name": "WalletWatch",
+  "name": "WalletWatch",
+  "icons": [
+    {
+      "src": "./src/assets/images/wallet-watch96x96.png",
+      "type": "image/png",
+      "sizes": "96x96"
+    },
+    {
+      "src": "./src/assets/images/wallet-watch128x128.png",
+      "type": "image/png",
+      "sizes": "128x128"
+    },
+    {
+      "src": "./src/assets/images/wallet-watch192x192.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "./src/assets/images/wallet-watch512x512.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ],
+  "orientation": "portrait",
+  "display": "standalone",
+  "id": "/",
+  "start_url": "/",
+  "description": "Keep track of expenses!",
+  "background_color": "#7eb4e2",
+  "theme_color": "#7eb4e2",
+  "screenshots": [
+    {
+      "src": "./src/assets/images/walletwatch-narrow.png",
+      "type": "image/png",
+      "sizes": "464x576",
+      "form_factor": "narrow"
+    },
+    {
+      "src": "./src/assets/images/walletwatch-wide.png",
+      "type": "image/jpg",
+      "sizes": "571x382",
+      "form_factor": "wide"
+    }
+  ]
+}
