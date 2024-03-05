@@ -1,4 +1,7 @@
-const Tech = require('./Tech');
-const Matchup = require('./Matchup');
+const User = require('./User')
+const Budget = require('./Budget')
+const Category = require('./Category')
+const Income = require('./Income')
+const Expense = require('./Expense')
 
-module.exports = { Tech, Matchup };
+module.exports = { User, Budget, Category, Income, Expense };

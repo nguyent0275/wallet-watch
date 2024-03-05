@@ -1,26 +1,48 @@
 const typeDefs = `
-  type Tech {
-    _id: ID!
-    name: String!
-  }
 
-  type Matchup {
-    _id: ID!
-    tech1: String!
-    tech2: String!
-    tech1_votes: Int
-    tech2_votes: Int
-  }
+type User {
+  _id: ID
+  firstName: String
+  lastName: String
+  email: String
+  budgets: [Budget]
+}
 
-  type Query {
-    tech: [Tech]
-    matchups(_id: String): [Matchup]
-  }
+type Category {
+  _id: ID
+  name: String
+}
 
-  type Mutation {
-    createMatchup(tech1: String!, tech2: String!): Matchup
-    createVote(_id: String!, techNum: Int!): Matchup
-  }
+type Budget {
+  _id: ID
+  budgetMonth: String
+  expenses: [Expense]
+  incomes: [Income]
+}
+
+type Expense {
+  _id: ID
+  name: String
+  date: Date
+  cost: Int
+  budget: Budget
+  category: Category
+}
+
+type Income {
+  _id: ID
+  name: String
+  date: Date
+  amount: Int
+  budget: Budget
+  category: Category
+}
+
+type Mutation {
+  addUser(firstName: String!, lastName: String!, email: String!, password: String!): Auth
+  login(email: String!, password: String!): Auth
+}
+
 `;
 
 module.exports = typeDefs;

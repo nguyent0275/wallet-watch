@@ -5,6 +5,7 @@ const cleanDB = require('./cleanDB');
 const techData = require('./techData.json');
 
 db.once('open', async () => {
+  // replace arguments with model name and collections name
   await cleanDB('Tech', 'teches');
 
   await Tech.insertMany(techData);
