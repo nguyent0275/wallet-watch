@@ -1,0 +1,18 @@
+{
+  "short_name": "WalletWatch",
+  "name": "WalletWatch",
+  "icons": [
+    {
+      "src": "./src/assets/wallet-watch.png",
+      "type": "image/png",
+      "sizes": "500x500",
+      "purpose": "any maskable"
+    }
+  ],
+  "orientation": "portrait",
+  "display": "standalone",
+  "start_url": "./",
+  "description": "Keep track of expenses!",
+  "background_color": "#7eb4e2",
+  "theme_color": "#7eb4e2"
+}
