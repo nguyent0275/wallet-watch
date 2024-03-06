@@ -1,22 +1,28 @@
-import { gql } from '@apollo/client';
+import { gql } from "@apollo/client";
 
-export const QUERY_TECH = gql`
-  query tech {
-    tech {
+export const QUERY_SINGLE_USER = gql`
+  query singleUser($userId: ID!) {
+    user(userId: $userId) {
       _id
-      name
-    }
-  }
-`;
-
-export const QUERY_MATCHUPS = gql`
-  query matchups($_id: String) {
-    matchups(_id: $_id) {
-      _id
-      tech1
-      tech2
-      tech1_votes
-      tech2_votes
+      firstName
+      lastName
+      email
+      budgets {
+        _id
+        budgetMonth
+        expenses {
+          _id
+          name
+          cost
+          date
+        }
+        incomes {
+          _id
+          name
+          amount
+          date
+        }
+      }
     }
   }
 `;

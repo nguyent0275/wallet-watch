@@ -17,20 +17,33 @@ const resolvers = {
           populate: ["expenses", "incomes"],
         });
     },
+    // finds a single user by their id and gets all their budgets, expenses, and incomes
+    user: async (parent, { userId }) => {
+      return await User.findOne({ _id: userId })
+        .populate("budgets")
+        .populate({
+          path: "budgets",
+          populate: ["expenses", "incomes"],
+        });
+    },
+    // find all budgets
     budgets: async () => {
       return await Budget.find({}).populate(["expenses", "incomes"]);
     },
+    // find all categories
     categories: async () => {
       return await Category.find({}).populate("budgets");
     },
   },
   Mutation: {
+    // sign up, creates the user
     addUser: async (parent, args) => {
       const user = await User.create(args);
       const token = signToken(user);
 
       return { token, user };
     },
+    // finds the user by their email, and logins
     login: async (parent, { email, password }) => {
       const user = await User.findOne({ email });
 
@@ -48,6 +61,7 @@ const resolvers = {
 
       return { token, user };
     },
+    // creates a budget, then finds a user and assigns the budget to them
     addBudget: async (parent, { userId, budgetMonth }) => {
       const budgetData = await Budget.create({ budgetMonth });
       console.log(budgetData);
@@ -61,9 +75,14 @@ const resolvers = {
               _id: budgetData._id,
             },
           },
+        },
+        {
+          new: true,
+          runValidators: true,
         }
       );
     },
+    // find a budget and adds an expense to the expenses array
     addExpense: async (parent, { budgetId, name, cost }) => {
       return await Budget.findOneAndUpdate(
         { _id: budgetId },
@@ -81,6 +100,7 @@ const resolvers = {
         }
       );
     },
+    // finds a budget and adds an income to the incomes array
     addIncome: async (parent, { budgetId, name, amount }) => {
       return await Budget.findOneAndUpdate(
         { _id: budgetId },
@@ -98,9 +118,11 @@ const resolvers = {
         }
       );
     },
+    // finds a budget by the id and deletes it
     removeBudget: async (parent, { budgetId }) => {
       return await Budget.findOneAndDelete({ _id: budgetId });
     },
+    // finds a budget by the id and pulls the expense from the expenses array
     removeExpense: async (parent, { budgetId, expenseId }) => {
       return await Budget.findOneAndUpdate(
         { _id: budgetId },
@@ -108,6 +130,7 @@ const resolvers = {
         { new: true }
       );
     },
+    // finds a budget by the id and pulls the income from the incomes array
     removeIncome: async (parent, { budgetId, incomeId }) => {
       return await Budget.findOneAndUpdate(
         { _id: budgetId },
