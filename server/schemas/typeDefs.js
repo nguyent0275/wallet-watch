@@ -23,16 +23,16 @@ type Budget {
 type Expense {
   _id: ID
   name: String
+  date: String
   cost: Int
-  budget: Budget
   category: Category
 }
 
 type Income {
   _id: ID
   name: String
+  date: String
   amount: Int
-  budget: Budget
   category: Category
 }
 
@@ -44,14 +44,18 @@ type Auth {
 type Mutation {
   addUser(firstName: String!, lastName: String!, email: String!, password: String!): Auth
   login(email: String!, password: String!): Auth
+  addBudget(userId: ID! budgetMonth: String!): User
+  addExpense(budgetId: ID!, name: String!, cost: Int!): Budget
+  addIncome(budgetId: ID!, name: String!, amount: Int!): Budget
+  removeBudget(budgetId: ID!): Budget
+  removeExpense(budgetId: ID!, expenseId: ID!): Budget
+  removeIncome(budgetId: ID!, incomeId: ID!): Budget
 }
 
 type Query {
   users: [User]
   categories: [Category]
   budgets: [Budget]
-  expenses: [Expense]
-  incomes: [Income]
 }
 
 `;
