@@ -47,7 +47,11 @@ type Mutation {
 }
 
 type Query {
+  users: [User]
   categories: [Category]
+  budgets: [Budget]
+  expenses: [Expense]
+  incomes: [Income]
 }
 
 `;

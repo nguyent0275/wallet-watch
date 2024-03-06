@@ -3,8 +3,29 @@ const { signToken, AuthenticationError } = require("../utils/auth");
 
 const resolvers = {
   Query: {
+    // finds user and gets all their budgets => expenses + incomes => the categories
+    users: async () => {
+      const data = await User.find({})
+        .populate("budgets")
+        .populate({
+          path: "budgets",
+          populate: ["expenses", "incomes"],
+        });
+      console.log(JSON.stringify(data, null, 2));
+      return data;
+    },
+
+    budgets: async () => {
+      return await Budget.find({}).populate(["expenses", "incomes"]);
+    },
+    expenses: async () => {
+      return await Expense.find({}).populate("category");
+    },
+    incomes: async () => {
+      return await Income.find({}).populate("category");
+    },
     categories: async () => {
-      return await Category.find();
+      return await Category.find({}).populate("budgets");
     },
   },
   Mutation: {

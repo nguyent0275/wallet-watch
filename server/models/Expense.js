@@ -7,7 +7,6 @@ const expenseSchema = new Schema({
   name: {
     type: String,
     required: true,
-    trim: true,
   },
   // date that the expense was paid/logged (default will be the current date)
   date: {
@@ -24,13 +23,13 @@ const expenseSchema = new Schema({
   budget: {
     type: Schema.Types.ObjectId,
     ref: "Budget",
-    required: true
+    // required: true
   },
   // references that category that the expense belongs in
   category: {
     type: Schema.Types.ObjectId,
     ref: "Category",
-    required: true,
+    // required: true,
   },
 });
 
