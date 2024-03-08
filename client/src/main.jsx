@@ -6,7 +6,6 @@ import Home from "./pages/Home.jsx";
 import Login from "./pages/Login.jsx";
 import Signup from "./pages/Signup.jsx";
 import ViewBudget from "./pages/ViewBudget.jsx";
-import ViewAllBudgets from "./pages/ViewAllBudgets.jsx";
 import NotFound from "./pages/NotFound";
 import SingleProfile from "./pages/SingleProfile.jsx";
 
@@ -31,10 +30,6 @@ const router = createBrowserRouter([
       {
         path: "/budget/:budgetId",
         element: <ViewBudget />,
-      },
-      {
-        path: "/viewAllBudgets",
-        element: <ViewAllBudgets />,
       },
       {
         path: "/user/:userId",

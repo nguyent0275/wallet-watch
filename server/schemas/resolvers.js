@@ -26,6 +26,14 @@ const resolvers = {
           populate: ["expenses", "incomes"],
         });
     },
+    // finds the logged in user data via tokens and context variable
+    me: async (parent, args, context) => {
+      console.log(context.user)
+      if (context.user) {
+        return User.findOne({ _id: context.user._id });
+      }
+      throw AuthenticationError;
+    },
     // find all budgets
     budgets: async () => {
       return await Budget.find({}).populate(["expenses", "incomes"]);
@@ -48,6 +56,7 @@ const resolvers = {
       const user = await User.create(args);
       const token = signToken(user);
 
+      console.log({token, user})
       return { token, user };
     },
     // finds the user by their email, and logins
@@ -66,6 +75,7 @@ const resolvers = {
 
       const token = signToken(user);
 
+      console.log({token, user})
       return { token, user };
     },
     // creates a budget, then finds a user and assigns the budget to them

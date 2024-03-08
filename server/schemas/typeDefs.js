@@ -55,6 +55,7 @@ type Mutation {
 type Query {
   users: [User]
   user(userId: ID!): User
+  me: User
   categories: [Category]
   budgets: [Budget]
   budget(budgetId: ID!): Budget

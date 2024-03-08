@@ -47,3 +47,30 @@ export const QUERY_SINGLE_BUDGET = gql`
     }
   }
 `;
+
+export const QUERY_ME = gql`
+  query me {
+    me {
+      _id
+      firstName
+      lastName
+      email
+      budgets {
+        _id
+        budgetMonth
+        expenses {
+          _id
+          name
+          cost
+          date
+        }
+        incomes {
+          _id
+          name
+          amount
+          date
+        }
+      }
+    }
+  }
+`;
