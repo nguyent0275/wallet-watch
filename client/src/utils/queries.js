@@ -26,3 +26,24 @@ export const QUERY_SINGLE_USER = gql`
     }
   }
 `;
+
+export const QUERY_SINGLE_BUDGET = gql`
+  query singleBudget($budgetId: ID!) {
+    budget(budgetId: $budgetId) {
+      _id
+      budgetMonth
+      expenses {
+        _id
+        name
+        cost
+        date
+      }
+      incomes {
+        _id
+        name
+        amount
+        date
+      }
+    }
+  }
+`;

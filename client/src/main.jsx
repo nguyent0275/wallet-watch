@@ -29,7 +29,7 @@ const router = createBrowserRouter([
         element: <Signup />,
       },
       {
-        path: "/viewBudget",
+        path: "/budget/:budgetId",
         element: <ViewBudget />,
       },
       {

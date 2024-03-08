@@ -30,6 +30,13 @@ const resolvers = {
     budgets: async () => {
       return await Budget.find({}).populate(["expenses", "incomes"]);
     },
+    // finds a single budget by the budget id and gets all the expensea and incomes
+    budget: async (parent, { budgetId }) => {
+      return await Budget.findOne({ _id: budgetId }).populate([
+        "expenses",
+        "incomes",
+      ]);
+    },
     // find all categories
     categories: async () => {
       return await Category.find({}).populate("budgets");

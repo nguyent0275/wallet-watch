@@ -57,6 +57,7 @@ type Query {
   user(userId: ID!): User
   categories: [Category]
   budgets: [Budget]
+  budget(budgetId: ID!): Budget
 }
 
 `;
