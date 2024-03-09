@@ -2,6 +2,7 @@ import { useParams } from "react-router-dom";
 import { useQuery } from "@apollo/client";
 import { QUERY_SINGLE_BUDGET } from "../utils/queries";
 
+// view a single budget based on the budget's _id and useParams()
 const ViewBudget = () => {
   const { budgetId } = useParams();
   const { loading, data } = useQuery(QUERY_SINGLE_BUDGET, {

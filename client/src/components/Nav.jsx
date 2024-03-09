@@ -1,8 +1,10 @@
 import Auth from "../utils/auth";
 import { Link } from "react-router-dom";
 
+// navbar component loads on every page
 function Nav() {
   function showNavigation() {
+    // if user is logged in, return MyProfile, Home, and Logout
     if (Auth.loggedIn()) {
       return (
         <ul className="flex-row">
@@ -22,6 +24,7 @@ function Nav() {
       );
     } else {
       return (
+        // if user is not logged in, return Signup, Home, and Login
         <ul className="flex-row">
           <li className="mx-1">
             <Link to="/signup">Signup</Link>
