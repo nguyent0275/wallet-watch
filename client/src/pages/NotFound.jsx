@@ -1,5 +1,6 @@
 import { useLocation } from 'react-router-dom';
 
+// error page
 function NotFound() {
   let location = useLocation();
   return (
