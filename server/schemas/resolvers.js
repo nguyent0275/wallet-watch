@@ -1,4 +1,4 @@
-const { User, Budget, Category, Expense, Income } = require("../models");
+const { User, Budget, Category } = require("../models");
 const { signToken, AuthenticationError } = require("../utils/auth");
 
 // use this for debugging / wrap function in a variable / log and return the variable
@@ -28,9 +28,6 @@ const resolvers = {
     },
     // finds the logged in user data via tokens and context variable
     me: async (parent, args, context) => {
-      console.log(context);
-      console.log(context.user);
-      // context is returning empty
       if (context.user) {
         return User.findOne({ _id: context.user._id })
           .populate("budgets")
@@ -39,6 +36,7 @@ const resolvers = {
             populate: ["expenses", "incomes"],
           });
       }
+      // if no user is found, throw error
       throw AuthenticationError;
     },
     // find all budgets
@@ -97,6 +95,7 @@ const resolvers = {
           $addToSet: {
             budgets: {
               _id: budgetData._id,
+              _userId: userId
             },
           },
         },

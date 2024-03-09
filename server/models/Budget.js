@@ -4,15 +4,21 @@ const dateFormat = require("../utils/dateFormat");
 const { Schema } = mongoose;
 
 const budgetSchema = new Schema({
+  // a budget should only belong to one user (disable for backend testing to apply budgets to multiple users)
   userId: {
     type: Schema.Types.ObjectId,
-    ref: "User"
+    ref: "User",
   },
+  // name of the budget month
   budgetMonth: {
     type: String,
     required: true,
+    // make it unique to the user???
+    // unique:true will not allow any other user to use the same budgetMonth
+    // unique: true,
     trim: true,
   },
+  // array of objects, containing expense data
   expenses: [
     {
       name: {
@@ -35,6 +41,7 @@ const budgetSchema = new Schema({
       },
     },
   ],
+  // array of objects containing income data
   incomes: [
     {
       name: {
