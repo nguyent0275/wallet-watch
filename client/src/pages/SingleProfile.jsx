@@ -1,22 +1,25 @@
-import { useParams } from "react-router-dom";
+import { Navigate, useParams } from "react-router-dom";
 // import { PieChart } from "react-chartkick";
 import "chartkick/chart.js";
 import { useQuery } from "@apollo/client";
-import { QUERY_SINGLE_USER } from "../utils/queries";
+import { QUERY_SINGLE_USER, QUERY_ME } from "../utils/queries";
 import ViewAllBudgets from "../components/ViewAllBudgets";
+import Auth from "../utils/auth"
 
 const SingleProfile = () => {
   const { userId } = useParams();
-  const { loading, data } = useQuery(QUERY_SINGLE_USER, {
+  // if there is no userId in the url as a parameter, execute the `QUERY_ME` instead for the logged in user's information 
+  const { loading, data } = useQuery(userId ? QUERY_SINGLE_USER : QUERY_ME, {
     variables: { userId: userId },
   });
-  const user = data?.user || [];
-  // console.log(loading);
-  // console.log(user);
+  const user = data?.me || data?.user || [];
+  console.log(user)
   const budgets = user.budgets;
   console.log(budgets);
-  // const expensesArray = user.budgets[0].expenses;
-  // const incomesArray = user.budgets[0].incomes;
+
+  if (Auth.loggedIn() && Auth.getProfile().data._id === userId) {
+    return <Navigate to="/user" />;
+  }
   if (loading) {
     return <div>Loading... </div>;
   }

@@ -31,9 +31,3 @@ export const ADD_USER = gql`
     }
   }
 `;
-
-// export const ADD_BUDGET = gql`
-//   mutation addBudget(
-//     $
-//   )
-// `

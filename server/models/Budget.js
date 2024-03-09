@@ -4,6 +4,10 @@ const dateFormat = require("../utils/dateFormat");
 const { Schema } = mongoose;
 
 const budgetSchema = new Schema({
+  userId: {
+    type: Schema.Types.ObjectId,
+    ref: "User"
+  },
   budgetMonth: {
     type: String,
     required: true,

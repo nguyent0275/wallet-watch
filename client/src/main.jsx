@@ -32,7 +32,7 @@ const router = createBrowserRouter([
         element: <ViewBudget />,
       },
       {
-        path: "/user/:userId",
+        path: "/user",
         element: <SingleProfile />,
       },
     ],

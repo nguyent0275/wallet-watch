@@ -13,6 +13,9 @@ function Nav() {
             </a>
           </li>
           <li>
+            <a href="/">Home</a>
+          </li>
+          <li>
             <a href="/user">My Profile</a>
           </li>
         </ul>
