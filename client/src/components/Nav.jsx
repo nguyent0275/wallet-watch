@@ -1,7 +1,20 @@
 import Auth from "../utils/auth";
 import { Link } from "react-router-dom";
 
+import "../../node_modules/bootstrap/scss"
+
 function Nav() {
+  const styles = {
+    navbar: {
+      background: "black",
+      color: "green",
+    },
+    text: {
+      paddingLeft: '30px',
+      paddingRight: '30px',
+    },
+  };
+
   function showNavigation() {
     if (Auth.loggedIn()) {
       return (
@@ -16,17 +29,42 @@ function Nav() {
       );
     } else {
       return (
-        <ul className="flex-row">
-          <li className="mx-1">
-            <Link to="/signup">Signup</Link>
+        //original
+
+        // <ul className="flex-row">
+        //   <li className="mx-1">
+        //     <Link to="/signup">Signup</Link>
+        //   </li>
+        //   <li className="mx-1">
+        //     <Link to="/login">Login</Link>
+        //   </li>
+        //   <li className="mx-1">
+        //     <Link to="/">Home</Link>
+        //   </li>
+        // </ul>
+
+        // regular bootstrap
+        <ul class="nav nav-tabs">
+          <li class="nav-item">
+            <a styles={styles.logo}>Wallet Watch</a>
           </li>
-          <li className="mx-1">
-            <Link to="/login">Login</Link>
+          <li class="nav-item">
+            <a class="nav-link" href="#">
+              <Link to="/">Home</Link>
+            </a>
           </li>
-          <li className="mx-1">
-            <Link to="/">Home</Link>
+          <li class="nav-item">
+            <a class="nav-link" href="#">
+              <Link to="/login">Login</Link>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">
+              <Link to="/signup">Signup</Link>
+            </a>
           </li>
         </ul>
+
       );
     }
   }
