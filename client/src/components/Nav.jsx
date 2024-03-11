@@ -1,8 +1,7 @@
 import Auth from "../utils/auth";
 import { Link } from "react-router-dom";
 
-import "../../node_modules/bootstrap/scss"
-
+// navbar component loads on every page
 function Nav() {
   const styles = {
     navbar: {
@@ -16,6 +15,7 @@ function Nav() {
   };
 
   function showNavigation() {
+    // if user is logged in, return MyProfile, Home, and Logout
     if (Auth.loggedIn()) {
       return (
         <ul className="flex-row">
@@ -25,33 +25,20 @@ function Nav() {
               Logout
             </a>
           </li>
+          <li>
+            <a href="/">Home</a>
+          </li>
+          <li>
+            <a href="/user">My Profile</a>
+          </li>
         </ul>
       );
     } else {
       return (
-        //original
-
-        // <ul className="flex-row">
-        //   <li className="mx-1">
-        //     <Link to="/signup">Signup</Link>
-        //   </li>
-        //   <li className="mx-1">
-        //     <Link to="/login">Login</Link>
-        //   </li>
-        //   <li className="mx-1">
-        //     <Link to="/">Home</Link>
-        //   </li>
-        // </ul>
-
-        // regular bootstrap
-        <ul class="nav nav-tabs">
-          <li class="nav-item">
-            <a styles={styles.logo}>Wallet Watch</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">
-              <Link to="/">Home</Link>
-            </a>
+        // if user is not logged in, return Signup, Home, and Login
+        <ul className="flex-row">
+          <li className="mx-1">
+            <Link to="/signup">Signup</Link>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="#">

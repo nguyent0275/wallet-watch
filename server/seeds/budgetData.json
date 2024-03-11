@@ -1,38 +1,64 @@
 [
-    {
-        "budgetMonth": "January 2024"
-    },
-    {
-        "budgetMonth": "February 2024"
-    },
-    {
-        "budgetMonth": "March 2024"
-    },
-    {
-        "budgetMonth": "April 2024"
-    },
-    {
-        "budgetMonth": "May 2024"
-    },
-    {
-        "budgetMonth": "June 2024"
-    },
-    {
-        "budgetMonth": "July 2024"
-    },
-    {
-        "budgetMonth": "August 2024"
-    },
-    {
-        "budgetMonth": "September 2024"
-    },
-    {
-        "budgetMonth": "October 2024"
-    },
-    {
-        "budgetMonth": "November 2024"
-    },
-    {
-        "budgetMonth": "December 2024"
-    }
+  {
+    "budgetMonth": "January 2024"
+  },
+  {
+    "userId": "65ecbb78b67d5e3e9942c425",
+    "budgetMonth": "February 2024",
+    "expenses": [
+      {
+        "name": "Gas",
+        "cost": 40
+      },
+      {
+        "name": "Rent",
+        "cost": 1100
+      },
+      {
+        "name": "Acme",
+        "cost": 95
+      },
+      {
+        "name": "Vet Bill",
+        "cost": 300
+      },
+      {
+        "name": "Dinner Date",
+        "cost": 50
+      },
+      {
+        "name": "Dune 2",
+        "cost": 20
+      },
+      {
+        "name": "UAS Loan",
+        "cost": 500
+      },
+      {
+        "name": "Gym Membership",
+        "cost": 20
+      },
+      {
+        "name": "Netflix",
+        "cost": 15
+      }
+    ],
+    "incomes": [
+      {
+        "name": "Check for 2/1 to 2/15",
+        "amount": 3000
+      },
+      {
+        "name": "Check for 2/16 to 2/29",
+        "amount": 2800
+      },
+      {
+        "name": "Freelance Work",
+        "amount": 400
+      }
+    ]
+  },
+  {
+    "budgetMonth": "March 2024"
+  }
 ]
