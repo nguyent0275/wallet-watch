@@ -3,7 +3,7 @@ const { ApolloServer } = require("@apollo/server");
 const { expressMiddleware } = require("@apollo/server/express4");
 const path = require("path");
 
-// mongodb password s
+// mongodb password
 // qZ2EgBF4tqVyWr7P
 
 const { typeDefs, resolvers } = require("./schemas");
