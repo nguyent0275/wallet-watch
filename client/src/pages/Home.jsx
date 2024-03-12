@@ -1,26 +1,38 @@
-import { Link } from "react-router-dom";
-import { PieChart } from "react-chartkick";
+// import { Link } from "react-router-dom";
+import Card from "../components/Card"
+import { Popup } from "reactjs-popup";
+// import { PieChart } from "react-chartkick";
 import "chartkick/chart.js";
+import "../assets/css/home.css";
+import Auth from "../utils/auth";
 
 const Home = () => {
+  if (Auth.loggedIn()) {
+    return (
+      <div>
+        <Popup trigger={<button> Add Budget </button>} modal nested>
+          {(close) => (
+            <div className="modal">
+              <div className="content">
+                <form>
+                  <label>What is the name of your budget?</label>
+                  <input type="text" id="budgetMonth"></input>
+                </form>
+              </div>
+              <div>
+                <button>Submit</button>
+                <button onClick={() => close()}>Close modal</button>
+              </div>
+            </div>
+          )}
+        </Popup>
+      </div>
+    );
+  }
   return (
     <>
       <h2>Home</h2>
-      <Link to="/viewBudget">
-        <button className="btn btn-lg btn-danger">View Budget!</button>
-      </Link>
-      <Link to="/viewAllBudgets">
-        <button className="btn btn-lg btn-danger">View All Budget!</button>
-      </Link>
-      <PieChart
-        data={[
-          ["Food", 400],
-          ["Gas", 100],
-          ["Bills", 1200],
-          ["Leisure", 300],
-          ["Leftover", 800],
-        ]}
-      />
+      <Card></Card>
     </>
   );
 };

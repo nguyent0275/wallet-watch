@@ -84,6 +84,7 @@ const resolvers = {
       return { token, user };
     },
     // creates a budget, then finds a user and assigns the budget to them
+    // add category once we find a way to translate front end "string" to backend objectID
     addBudget: async (parent, { userId, budgetMonth }) => {
       const budgetData = await Budget.create({ budgetMonth });
       console.log(budgetData);
