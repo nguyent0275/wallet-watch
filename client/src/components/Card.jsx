@@ -1,5 +1,7 @@
 import Card from "react-bootstrap/Card";
 
+// https://react-bootstrap.netlify.app/docs/components/cards/
+
 const InfoCard = () => {
   return (
     <>

@@ -6,6 +6,8 @@ import {
     FooterLink,
     Heading,
 } from "./FooterStyles";
+
+// https://www.geeksforgeeks.org/how-to-create-a-simple-responsive-footer-in-react-js/
  
 const Footer = () => {
     return (
