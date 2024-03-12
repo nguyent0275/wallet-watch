@@ -9,7 +9,7 @@ nav ul {
     color: white;
   }
   
-  a {
+  .nav-link {
     color: white;
     text-decoration: none;
   }

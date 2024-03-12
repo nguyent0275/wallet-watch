@@ -1,6 +1,6 @@
-import Auth from "../utils/auth";
+import Auth from "../../utils/auth";
 import { Link } from "react-router-dom";
-import logo from "../assets/images/wallet-watch.png";
+import logo from "../../assets/images/wallet-watch.png";
 
 import "./nav.css";
 
@@ -12,16 +12,16 @@ function Nav() {
       return (
         <ul className="flex-row">
           <li>
-            <a href="/">Home</a>
+            <a className="nav-link" href="/">Home</a>
           </li>
           <li className="mx-1">
             {/* this is not using the Link component to logout or user and then refresh the application to the start */}
-            <a href="/" onClick={() => Auth.logout()}>
+            <a className="nav-link" href="/" onClick={() => Auth.logout()}>
               Logout
             </a>
           </li>
           <li>
-            <a href="/user">My Profile</a>
+            <a className="nav-link" href="/user">My Profile</a>
           </li>
         </ul>
       );
@@ -45,7 +45,9 @@ function Nav() {
 
   return (
     <header className="flex-row px-1">
-      <h2><img src={logo} alt="logo" /> Wallet Watch</h2>
+      <h2>
+        <img src={logo} alt="logo" /> Wallet Watch
+      </h2>
       <nav>{showNavigation()}</nav>
     </header>
   );
