@@ -42,6 +42,7 @@ function Nav() {
 
   return (
     <header className="flex-row px-1">
+      <h2>WalletWatch</h2>
       <nav>{showNavigation()}</nav>
     </header>
   );
