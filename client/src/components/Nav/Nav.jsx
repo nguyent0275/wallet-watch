@@ -11,7 +11,7 @@ function Nav() {
     if (Auth.loggedIn()) {
       return (
         <ul className="flex-row">
-          <li>
+          <li className="nav-link">
             <a className="nav-link" href="/">Home</a>
           </li>
           <li className="mx-1">
@@ -30,13 +30,13 @@ function Nav() {
         // if user is not logged in, return Signup, Home, and Login
         <ul className="flex-row">
           <li className="mx-1">
-            <Link to="/">Home</Link>
+            <Link className="nav-link" to="/">Home</Link>
           </li>
           <li className="mx-1">
-            <Link to="/signup">Signup</Link>
+            <Link className="nav-link" to="/signup">Signup</Link>
           </li>
           <li className="mx-1">
-            <Link to="/login">Login</Link>
+            <Link className="nav-link" to="/login">Login</Link>
           </li>
         </ul>
       );
