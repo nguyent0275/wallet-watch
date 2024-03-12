@@ -1,6 +1,9 @@
 {
   "name": "wallet-watch",
   "version": "1.0.0",
+  "engines": {
+    "node" : "20.x"
+  },
   "description": "A budget tracking app for users to be able to quickly track their expenses and budget their money easily.",
   "main": "server/server.js",
   "scripts": {
