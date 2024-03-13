@@ -19,97 +19,41 @@ const Footer = () => {
                     marginTop: "10px",
                 }}
             >
-                A Computer Science Portal for Geeks!
+                More about WalletWatch!
             </h1>
             <FooterContainer>
                 <Row>
                     <Column>
-                        <Heading>About Us</Heading>
-                        <FooterLink href="#">
-                            Aim
+                        <Heading>Find us on github!</Heading>
+                        <FooterLink href="https://github.com/nsettyy">
+                            Nick
                         </FooterLink>
-                        <FooterLink href="#">
-                            Vision
+                        <FooterLink href="https://github.com/TorresBones">
+                            Jonathan
                         </FooterLink>
-                        <FooterLink href="#">
-                            Testimonials
+                        <FooterLink href="https://github.com/BorzoiBurrow">
+                            Brad
                         </FooterLink>
-                    </Column>
-                    <Column>
-                        <Heading>Services</Heading>
-                        <FooterLink href="#">
-                            Writing
+                        <FooterLink href="https://github.com/savannahjk02">
+                          savannah
                         </FooterLink>
-                        <FooterLink href="#">
-                            Internships
+                        <FooterLink href="https://github.com/nguyent0275">
+                            Toan
                         </FooterLink>
-                        <FooterLink href="#">
-                            Coding
-                        </FooterLink>
-                        <FooterLink href="#">
-                            Teaching
+                        <FooterLink href="https://github.com/nsettyy/wallet-watch">
+                        Project github
                         </FooterLink>
                     </Column>
                     <Column>
-                        <Heading>Contact Us</Heading>
-                        <FooterLink href="#">
-                            Uttar Pradesh
+                        <Heading>Find us on LinkedIn!</Heading>
+                        <FooterLink href="https://www.linkedin.com/in/toan-nguyen-2498a1293/">
+                            Toan
                         </FooterLink>
-                        <FooterLink href="#">
-                            Ahemdabad
+                        <FooterLink href="https://www.linkedin.com/in/nicholas-settembrino-504760187/">
+                            Nick
                         </FooterLink>
-                        <FooterLink href="#">
-                            Indore
-                        </FooterLink>
-                        <FooterLink href="#">
-                            Mumbai
-                        </FooterLink>
-                    </Column>
-                    <Column>
-                        <Heading>Social Media</Heading>
-                        <FooterLink href="#">
-                            <i className="fab fa-facebook-f">
-                                <span
-                                    style={{
-                                        marginLeft: "10px",
-                                    }}
-                                >
-                                    Facebook
-                                </span>
-                            </i>
-                        </FooterLink>
-                        <FooterLink href="#">
-                            <i className="fab fa-instagram">
-                                <span
-                                    style={{
-                                        marginLeft: "10px",
-                                    }}
-                                >
-                                    Instagram
-                                </span>
-                            </i>
-                        </FooterLink>
-                        <FooterLink href="#">
-                            <i className="fab fa-twitter">
-                                <span
-                                    style={{
-                                        marginLeft: "10px",
-                                    }}
-                                >
-                                    Twitter
-                                </span>
-                            </i>
-                        </FooterLink>
-                        <FooterLink href="#">
-                            <i className="fab fa-youtube">
-                                <span
-                                    style={{
-                                        marginLeft: "10px",
-                                    }}
-                                >
-                                    Youtube
-                                </span>
-                            </i>
+                        <FooterLink href="https://www.linkedin.com/in/bradley-reeser-834681252/">
+                            Brad
                         </FooterLink>
                     </Column>
                 </Row>
