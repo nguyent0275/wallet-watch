@@ -10,6 +10,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 import Nav from "./components/Nav.jsx";
 import Footer from "./components/Footer/Footer.jsx"
+import "./App.css"
 
 const httpLink = createHttpLink({
   uri: "/graphql",

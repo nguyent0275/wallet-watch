@@ -12,6 +12,14 @@
   /* 2 */
 }
 
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #303030;
+  background-size: cover;
+  background-position: center;
+}
+
 /* Sections
    ========================================================================== */
 /**
@@ -1193,14 +1201,7 @@ label form [type='radio'] {
 
 /* FLEX CONTENT */
 .flex-row {
-  display: flex;
   flex-direction: row;
-  flex-wrap: wrap;
-}
-
-.flex-column {
-  display: flex;
-  flex-direction: column;
   flex-wrap: wrap;
 }
 
@@ -1264,13 +1265,11 @@ label form [type='radio'] {
   align-content: center;
 }
 
-.row {
-  display: flex;
-  flex-wrap: wrap;
+/* .row {
   flex-direction: row;
   margin-left: -15px;
   margin-right: -15px;
-}
+} */
 
 [class*='col-'] {
   position: relative;

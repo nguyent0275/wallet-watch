@@ -10,12 +10,22 @@ nav ul {
   }
   
   a {
-    color: white;
-    text-decoration: none;
+    color: white !important;
+    text-decoration: none !important;
+  }
+
+  a:hover {
+    color: slategrey !important;
+    text-decoration: wavy !important;
   }
 
   header {
+    margin: 0;
+    padding: 0;
     background-color: black;
+    background-image: url('../assets/images/headerbg.jpg');
+    background-size: cover;
+    background-position: center;
   }
 
   header h2 {
