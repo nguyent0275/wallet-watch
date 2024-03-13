@@ -3,8 +3,8 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 import App from "./App.jsx";
 import Home from "./pages/Home.jsx";
-import Login from "./pages/Login.jsx";
-import Signup from "./pages/Signup.jsx";
+import Login from "./pages/Login/Login.jsx";
+import Signup from "./pages/Signup/Signup.jsx";
 import ViewBudget from "./pages/ViewBudget.jsx";
 import NotFound from "./pages/NotFound";
 import SingleProfile from "./pages/SingleProfile.jsx";
