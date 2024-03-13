@@ -5,7 +5,7 @@ import { Popup } from "reactjs-popup";
 import BudgetForm from "../components/BudgetForm/BudgetForm";
 import { useQuery } from "@apollo/client";
 import { QUERY_SINGLE_USER, QUERY_ME } from "../utils/queries";
-import ViewAllBudgets from "../components/ViewAllBudgets";
+import ViewAllBudgets from "../components/ViewAllBudgets/ViewAllBudgets";
 import Auth from "../utils/auth";
 
 // shows all the budgets of a single user
@@ -44,7 +44,7 @@ const SingleProfile = () => {
         {(close) => (
           <div className="modal">
             <div className="content">
-              <BudgetForm />
+              <BudgetForm userId={user._id} />
               <button onClick={() => close()}>Close modal</button>
             </div>
           </div>
