@@ -1,11 +1,10 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { useMutation } from "@apollo/client";
-import Auth from "../utils/auth";
-import { ADD_USER } from "../utils/mutations";
+import Auth from "../../utils/auth";
+import { ADD_USER } from "../../utils/mutations";
 
-import "bootstrap/dist/css/bootstrap.min.css";
-import "../styles/signup.css";
+import "./Signup.css";
 
 function Signup() {
   const [formState, setFormState] = useState({ email: "", password: "" });
@@ -39,10 +38,11 @@ function Signup() {
 
       <h2>Signup</h2>
       <form onSubmit={handleFormSubmit}>
-
         <div class="row">
           <div class="column">
-            <label class='label' htmlFor="firstName">First Name:</label>
+            <label class="label" htmlFor="firstName">
+              First Name :
+            </label>
             <input
               placeholder="First Name"
               name="firstName"
@@ -52,7 +52,9 @@ function Signup() {
             />
           </div>
           <div class="column">
-            <label class='label' htmlFor="email">Email:</label>
+            <label class="label" htmlFor="email">
+              Email Address:
+            </label>
             <input
               placeholder="example@domain.com"
               name="email"
@@ -65,7 +67,9 @@ function Signup() {
 
         <div class="row">
           <div class="column">
-            <label class='label' htmlFor="lastName">Last Name:</label>
+            <label class="label" htmlFor="lastName">
+              Last Name:
+            </label>
             <input
               placeholder="Last Name"
               name="lastName"
@@ -75,7 +79,9 @@ function Signup() {
             />
           </div>
           <div class="column">
-            <label class='label' htmlFor="pwd">Password:</label>
+            <label class="label" htmlFor="pwd">
+              Password:
+            </label>
             <input
               placeholder="**********"
               name="password"
@@ -86,8 +92,8 @@ function Signup() {
           </div>
         </div>
 
-        <div class='row' id="submit">
-          <button type="submit">Submit</button>
+        <div class="row" id="submit">
+          <button type="submit">Signup</button>
         </div>
       </form>
     </div>
