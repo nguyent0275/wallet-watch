@@ -1,11 +1,14 @@
+//React Imports
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { useMutation } from "@apollo/client";
 import Auth from "../../utils/auth";
 import { ADD_USER } from "../../utils/mutations";
 
-import "./Signup.css";
+//CSS Imports
+import "./signup.css";
 
+//Signup Function
 function Signup() {
   const [formState, setFormState] = useState({ email: "", password: "" });
   const [addUser] = useMutation(ADD_USER);
@@ -41,7 +44,7 @@ function Signup() {
         <div class="row">
           <div class="column">
             <label class="label" htmlFor="firstName">
-              First Name :
+              First Name:
             </label>
             <input
               placeholder="First Name"

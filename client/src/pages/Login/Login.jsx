@@ -1,11 +1,14 @@
+//React Imports
 import { useState } from "react";
 import { useMutation } from "@apollo/client";
 import { Link } from "react-router-dom";
 import { LOGIN } from "../../utils/mutations";
 import Auth from "../../utils/auth";
 
-import "./Login.css"
+//CSS Imports
+import "./login.css";
 
+//Login Function
 function Login() {
   const [formState, setFormState] = useState({ email: "", password: "" });
   const [login, { error }] = useMutation(LOGIN);
@@ -68,7 +71,7 @@ function Login() {
         </div>
 
         {error ? (
-          <div>
+          <div class='row' id='error'>
             <p className="error-text">The provided credentials are incorrect</p>
           </div>
         ) : null}
