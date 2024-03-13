@@ -1,6 +1,10 @@
+//React Imports
 import { useLocation } from 'react-router-dom';
 
-// error page
+//Css Imports
+import "./notfound.css"
+
+//Error Page
 function NotFound() {
   let location = useLocation();
   return (
