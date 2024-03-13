@@ -2,7 +2,7 @@ import Auth from "../utils/auth";
 import { Link } from "react-router-dom";
 import logo from "../assets/images/wallet-watch.png";
 
-import "./nav.css";
+import "../styles/nav.css";
 
 // navbar component loads on every page
 function Nav() {
