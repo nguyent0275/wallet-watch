@@ -43,3 +43,33 @@ export const ADD_BUDGET = gql`
     }
   }
 `;
+
+export const ADD_EXPENSE = gql`
+  mutation AddExpense($budgetId: ID!, $name: String!, $cost: Int!) {
+    addExpense(budgetId: $budgetId, name: $name, cost: $cost) {
+      _id
+      budgetMonth
+      expenses {
+        _id
+        date
+        name
+        cost
+      }
+    }
+  }
+`;
+
+export const ADD_INCOME = gql`
+  mutation AddIncome($budgetId: ID!, $name: String!, $amount: Int!) {
+    addIncome(budgetId: $budgetId, name: $name, amount: $amount) {
+      _id
+      budgetMonth
+      incomes {
+        _id
+        date
+        name
+        amount
+      }
+    }
+  }
+`;

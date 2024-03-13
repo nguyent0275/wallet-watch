@@ -25,7 +25,7 @@ const ViewBudget = () => {
         {(close) => (
           <div className="modal">
             <div className="content">
-              <ExpenseForm />
+              <ExpenseForm budgetId={budget._id} />
               <button onClick={() => close()}>Close modal</button>
             </div>
           </div>
@@ -39,7 +39,7 @@ const ViewBudget = () => {
         {(close) => (
           <div className="modal">
             <div className="content">
-              <IncomeForm />
+              <IncomeForm budgetId={budget._id} />
               <button onClick={() => close()}>Close modal</button>
             </div>
           </div>

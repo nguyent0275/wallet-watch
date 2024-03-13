@@ -8,7 +8,8 @@ const BudgetForm = ({ userId }) => {
 
   const [addBudget, { error }] = useMutation(ADD_BUDGET)
 
-  const handleFormSubmit = async (event) => {
+  const handleFormSubmit = async () => {
+    // add event as an arg for handleFormSubmit as well
     // will stop the page from refreshing (working as intended, so page will refresh with the addition of new budget)
     // event.preventDefault()
 
