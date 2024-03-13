@@ -77,7 +77,7 @@ function Login() {
         ) : null}
 
         <div class="row" id="submit">
-          <button type="submit">Login</button>
+          <button id='submit-button' type="submit">Login</button>
         </div>
       </form>
     </div>
