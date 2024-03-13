@@ -1,10 +1,12 @@
 import { Navigate, useParams } from "react-router-dom";
 // import { PieChart } from "react-chartkick";
 import "chartkick/chart.js";
+import { Popup } from "reactjs-popup";
+import BudgetForm from "../components/BudgetForm/BudgetForm";
 import { useQuery } from "@apollo/client";
 import { QUERY_SINGLE_USER, QUERY_ME } from "../utils/queries";
 import ViewAllBudgets from "../components/ViewAllBudgets";
-import Auth from "../utils/auth"
+import Auth from "../utils/auth";
 
 // shows all the budgets of a single user
 // finds the user via their _id and useParams()
@@ -12,7 +14,7 @@ import Auth from "../utils/auth"
 // JWT & Context
 const SingleProfile = () => {
   const { userId } = useParams();
-  // if there is no userId in the url as a parameter, execute the `QUERY_ME` instead for the logged in user's information 
+  // if there is no userId in the url as a parameter, execute the `QUERY_ME` instead for the logged in user's information
   // `QUERY_ME` uses the context from the JWT to grab the logged in user's data
   const { loading, data } = useQuery(userId ? QUERY_SINGLE_USER : QUERY_ME, {
     variables: { userId: userId },
@@ -34,6 +36,20 @@ const SingleProfile = () => {
         {user.firstName} {user.lastName}
       </h2>
       <ViewAllBudgets budgets={budgets} />
+      <Popup
+        trigger={<button> Add Budget </button>}
+        position="right center"
+        modal
+      >
+        {(close) => (
+          <div className="modal">
+            <div className="content">
+              <BudgetForm />
+              <button onClick={() => close()}>Close modal</button>
+            </div>
+          </div>
+        )}
+      </Popup>
     </>
   );
 };
