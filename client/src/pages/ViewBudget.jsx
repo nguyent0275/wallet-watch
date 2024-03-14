@@ -12,6 +12,7 @@ const ViewBudget = () => {
     variables: { budgetId: budgetId },
   });
   const budget = data?.budget || [];
+  console.log(budget);
   if (loading) {
     return <div>Loading... </div>;
   }
@@ -25,7 +26,7 @@ const ViewBudget = () => {
         {(close) => (
           <div className="modal">
             <div className="content">
-              <ExpenseForm />
+              <ExpenseForm budgetId={budget._id} />
               <button onClick={() => close()}>Close modal</button>
             </div>
           </div>
@@ -39,7 +40,7 @@ const ViewBudget = () => {
         {(close) => (
           <div className="modal">
             <div className="content">
-              <IncomeForm />
+              <IncomeForm budgetId={budget._id} />
               <button onClick={() => close()}>Close modal</button>
             </div>
           </div>
@@ -53,12 +54,14 @@ const ViewBudget = () => {
             <th>Date</th>
             <th>Name</th>
             <th>Cost</th>
+            <th>Category</th>
           </tr>
           {budget.expenses.map((expense, index) => (
             <tr key={index}>
               <td>{expense.date}</td>
               <td>{expense.name}</td>
               <td>{expense.cost}</td>
+              <td>{expense.category.name}</td>
             </tr>
           ))}
         </tbody>
