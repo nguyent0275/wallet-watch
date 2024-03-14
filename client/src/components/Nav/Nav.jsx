@@ -57,9 +57,7 @@ function Nav() {
 
   return (
     <header className="flex-row px-1">
-      <h2>
-        <img src={logo} alt="logo" /> Wallet Watch
-      </h2>
+        <img src={logo} alt="logo" />
       <nav>{showNavigation()}</nav>
     </header>
   );
