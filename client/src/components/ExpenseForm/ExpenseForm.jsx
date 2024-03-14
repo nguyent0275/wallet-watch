@@ -9,14 +9,11 @@ const ExpenseForm = ({ budgetId }) => {
   // getting all categories from the backend
   const { loading, data } = useQuery(QUERY_ALL_CATEGORIES);
   const categories = data?.categories || [];
-  // console.log(data);
-  // console.log(categories);
 
   // setting the initial states (.01 is the min value that the field takes)
   const [name, setName] = useState("");
   const [cost, setCost] = useState(0.01);
   const [categoryId, setCategoryId] = useState("");
-  console.log(categoryId);
 
   // giving the mutation functionality to the variable addExpense
   const [addExpense, { error }] = useMutation(ADD_EXPENSE);
@@ -29,15 +26,16 @@ const ExpenseForm = ({ budgetId }) => {
 
     try {
       console.log("test");
-      console.log(budgetId)
-      console.log(name)
-      console.log(cost)
-      console.log(categoryId)
+      console.log(budgetId);
+      console.log(name);
+      console.log(cost);
+      console.log(categoryId);
+
       // running mutations with the provided variables as arguments
-      const data = await addExpense({
+      const expenseData = await addExpense({
         variables: { budgetId, name, cost, categoryId },
       });
-      console.log(data);
+      console.log(expenseData);
       setCost(0.01);
       setName("");
       setCategoryId("");
@@ -70,7 +68,7 @@ const ExpenseForm = ({ budgetId }) => {
         ></input>
         <label>What category does it belong to?</label>
         <select
-          value={categoryId}
+          // value={categoryId}
           onChange={(event) => setCategoryId(event.target.value)}
         >
           <CategoryOptions categories={categories} />

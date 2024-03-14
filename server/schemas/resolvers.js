@@ -17,6 +17,7 @@ const resolvers = {
           populate: ["expenses", "incomes"],
         });
     },
+    // adding the category populate will break the code if there is no budget/category on the user and me queries
     // finds a single user by their id and gets all their budgets, expenses, and incomes
     user: async (parent, { userId }) => {
       return await User.findOne({ _id: userId })
@@ -25,6 +26,11 @@ const resolvers = {
           path: "budgets",
           populate: ["expenses", "incomes"],
         });
+      // breaks page
+      // .populate({
+      //   path: "expenses",
+      //   populate: "category"
+      // });
     },
     // finds the logged in user data via tokens and context 'variable'
     me: async (parent, args, context) => {
@@ -35,12 +41,16 @@ const resolvers = {
             path: "budgets",
             populate: ["expenses", "incomes"],
           });
+        // breaks page
+        // .populate({
+        //   path: "expenses",
+        //   populate: "category"
+        // });
       }
       // if no user is found, throw error
       throw AuthenticationError;
     },
     // find all budgets
-    // adding the category populate will break the code if there is no budget/category on the user and me queries
     budgets: async () => {
       return await Budget.find({}).populate(["expenses", "incomes"]).populate({
         path: "expenses",
@@ -49,10 +59,12 @@ const resolvers = {
     },
     // finds a single budget by the budget id and gets all the expensea and incomes
     budget: async (parent, { budgetId }) => {
-      return await Budget.findOne({ _id: budgetId }).populate([
-        "expenses",
-        "incomes",
-      ]);
+      return await Budget.findOne({ _id: budgetId })
+        .populate(["expenses", "incomes"])
+        .populate({
+          path: "expenses",
+          populate: "category",
+        });
     },
     // find all categories and their _id
     categories: async () => {
