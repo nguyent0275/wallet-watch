@@ -74,3 +74,12 @@ export const QUERY_ME = gql`
     }
   }
 `;
+
+export const QUERY_ALL_CATEGORIES = gql`
+  query allCategories {
+    categories {
+      _id
+      name
+    }
+  }
+`;

@@ -50,9 +50,9 @@ const resolvers = {
         "incomes",
       ]);
     },
-    // find all categories
+    // find all categories and their _id
     categories: async () => {
-      return await Category.find({}).populate("budgets");
+      return await Category.find({});
     },
   },
   Mutation: {
@@ -96,7 +96,7 @@ const resolvers = {
           $addToSet: {
             budgets: {
               _id: budgetData._id,
-              _userId: userId
+              _userId: userId,
             },
           },
         },

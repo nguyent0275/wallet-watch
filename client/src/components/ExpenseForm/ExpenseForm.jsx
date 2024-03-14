@@ -1,10 +1,19 @@
 // imports
+import { useQuery } from "@apollo/client";
 import { useState } from "react";
 import { useMutation } from "@apollo/client";
+import { QUERY_ALL_CATEGORIES } from "../../utils/queries";
 import { ADD_EXPENSE } from "../../utils/mutations";
-
+import CategoryOptions from "../CategoryOptions";
 
 const ExpenseForm = ({ budgetId }) => {
+  // getting all categories from the backend
+  const { loading, data } = useQuery(QUERY_ALL_CATEGORIES);
+  const categories = data?.categories || [];
+  console.log(data);
+  console.log(categories)
+  
+
   // setting the initial states (.01 is the min value that the field takes)
   const [name, setName] = useState("");
   const [cost, setCost] = useState(0.01);
@@ -21,13 +30,17 @@ const ExpenseForm = ({ budgetId }) => {
       const data = await addExpense({
         variables: { budgetId, name, cost },
       });
-      console.log(data)
+      console.log(data);
       setCost(0.01);
       setName("");
     } catch (err) {
       console.error(err);
     }
   };
+
+  if (loading) {
+    return <div>Loading... </div>;
+  }
   return (
     <>
       <form onSubmit={handleFormSubmit}>
@@ -49,7 +62,7 @@ const ExpenseForm = ({ budgetId }) => {
         ></input>
         <label>What category does it belong to?</label>
         <select>
-          <option></option>
+          <CategoryOptions categories={categories} />
         </select>
         <button type="submit">Submit</button>
         {error && <div>Something went wrong... </div>}
