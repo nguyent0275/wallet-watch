@@ -12,6 +12,7 @@ const ViewBudget = () => {
     variables: { budgetId: budgetId },
   });
   const budget = data?.budget || [];
+  console.log(budget);
   if (loading) {
     return <div>Loading... </div>;
   }
@@ -60,7 +61,7 @@ const ViewBudget = () => {
               <td>{expense.date}</td>
               <td>{expense.name}</td>
               <td>{expense.cost}</td>
-              {/* <td>{expense.category.name}</td> */}
+              <td>{expense.category.name}</td>
             </tr>
           ))}
         </tbody>

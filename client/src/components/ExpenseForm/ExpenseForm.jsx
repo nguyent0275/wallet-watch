@@ -21,8 +21,8 @@ const ExpenseForm = ({ budgetId }) => {
   // add errorhandling, inputting 0 will not add the expense but it will also not error out
   // initial state is blank or empty, need to change the state to get value
   // categoryid will return blank if you try and use the first option without changing
-  const handleFormSubmit = async (event) => {
-    event.preventDefault();
+  const handleFormSubmit = async () => {
+    // event.preventDefault();
 
     try {
       console.log("test");
