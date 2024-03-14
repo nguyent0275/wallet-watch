@@ -11,7 +11,7 @@ const CategoryOptions = (categories) => {
     <>
       {categories &&
         categories.categories.map((category) => (
-          <option key={category._id}>{category.name}</option>
+          <option value={category._id} key={category._id}>{category.name}</option>
         ))}
     </>
   );

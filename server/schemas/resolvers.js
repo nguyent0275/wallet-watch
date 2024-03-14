@@ -26,7 +26,7 @@ const resolvers = {
           populate: ["expenses", "incomes"],
         });
     },
-    // finds the logged in user data via tokens and context variable
+    // finds the logged in user data via tokens and context 'variable'
     me: async (parent, args, context) => {
       if (context.user) {
         return User.findOne({ _id: context.user._id })
@@ -40,8 +40,12 @@ const resolvers = {
       throw AuthenticationError;
     },
     // find all budgets
+    // adding the category populate will break the code if there is no budget/category on the user and me queries
     budgets: async () => {
-      return await Budget.find({}).populate(["expenses", "incomes"]);
+      return await Budget.find({}).populate(["expenses", "incomes"]).populate({
+        path: "expenses",
+        populate: "category",
+      });
     },
     // finds a single budget by the budget id and gets all the expensea and incomes
     budget: async (parent, { budgetId }) => {
@@ -84,7 +88,6 @@ const resolvers = {
       return { token, user };
     },
     // creates a budget, then finds a user and assigns the budget to them
-    // add category once we find a way to translate front end "string" to backend objectID
     addBudget: async (parent, { userId, budgetMonth }) => {
       const budgetData = await Budget.create({ budgetMonth });
       console.log(budgetData);
@@ -107,7 +110,7 @@ const resolvers = {
       );
     },
     // find a budget and adds an expense to the expenses array
-    addExpense: async (parent, { budgetId, name, cost }) => {
+    addExpense: async (parent, { budgetId, name, cost, categoryId }) => {
       return await Budget.findOneAndUpdate(
         { _id: budgetId },
         {
@@ -115,6 +118,9 @@ const resolvers = {
             expenses: {
               name,
               cost,
+              category: {
+                _id: categoryId,
+              },
             },
           },
         },

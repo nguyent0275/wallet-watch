@@ -45,15 +45,29 @@ export const ADD_BUDGET = gql`
 `;
 
 export const ADD_EXPENSE = gql`
-  mutation AddExpense($budgetId: ID!, $name: String!, $cost: Int!) {
-    addExpense(budgetId: $budgetId, name: $name, cost: $cost) {
+  mutation AddExpense(
+    $budgetId: ID!
+    $name: String!
+    $cost: Int!
+    $categoryId: ID!
+  ) {
+    addExpense(
+      budgetId: $budgetId
+      name: $name
+      cost: $cost
+      category: $categoryId
+    ) {
       _id
       budgetMonth
       expenses {
         _id
-        date
         name
+        date
         cost
+        category {
+          _id
+          name
+        }
       }
     }
   }

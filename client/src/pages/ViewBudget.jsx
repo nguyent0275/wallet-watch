@@ -53,12 +53,14 @@ const ViewBudget = () => {
             <th>Date</th>
             <th>Name</th>
             <th>Cost</th>
+            <th>Category</th>
           </tr>
           {budget.expenses.map((expense, index) => (
             <tr key={index}>
               <td>{expense.date}</td>
               <td>{expense.name}</td>
               <td>{expense.cost}</td>
+              <td>{expense.category.name}</td>
             </tr>
           ))}
         </tbody>
