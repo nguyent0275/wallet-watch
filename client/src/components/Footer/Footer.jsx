@@ -11,10 +11,10 @@ import {
  
 const Footer = () => {
     return (
-        <Box>
+        <Box style={{ justifyContent: "center" }}>
             <h1
                 style={{
-                    color: "green",
+                    color: "rgb(240, 175, 11)",
                     textAlign: "center",
                     marginTop: "10px",
                 }}
@@ -35,7 +35,7 @@ const Footer = () => {
                             Brad
                         </FooterLink>
                         <FooterLink href="https://github.com/savannahjk02">
-                          savannah
+                          Savannah
                         </FooterLink>
                         <FooterLink href="https://github.com/nguyent0275">
                             Toan
