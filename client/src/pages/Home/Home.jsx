@@ -24,7 +24,7 @@ const Home = () => {
                 <div className="modal">
                   <div className="content">
                     <BudgetForm />
-                    <button onClick={() => close()}>Close modal</button>
+                    <button onClick={() => close()}>Close Modal</button>
                   </div>
                 </div>
               )}

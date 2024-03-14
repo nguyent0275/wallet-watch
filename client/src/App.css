@@ -56,6 +56,14 @@ header {
   background-size: cover;
 }
 
+button { 
+  background-color: #000000;
+  color: rgba(206, 147, 0, 0.973);
+}
+
+form {
+  margin-top: 50%;
+}
 
 /* Grouping content
    ========================================================================== */
@@ -172,6 +180,7 @@ input,
 optgroup,
 select,
 textarea {
+  border-radius: 2rem;
   font-family: inherit;
   /* 1 */
   font-size: 100%;
@@ -1172,17 +1181,18 @@ form .form-label {
   display: inline-block;
   font-size: 1.2rem;
   margin: 0.625rem 0 0.25rem 0.3rem;
+  color: white;
 }
 
 form .form-input {
   width: 100%;
   padding: 0.75rem;
-  color: #1a1a1a;
+  color: white;
   background-color: #ffffff;
   margin: 0.625rem 0;
   font-size: 1.2rem;
   border: 1px solid #484848;
-  border-radius: 0.3rem;
+  border-radius: 5rem;
 }
 
 form .form-input.form-input-squared {

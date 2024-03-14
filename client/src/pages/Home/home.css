@@ -1,7 +1,13 @@
 .modal {
   display: flex;
+  justify-content: center;
 }
 
 #card-container {
   display: flex;
+  justify-content: center;
+}
+
+h2 {
+  color: white;
 }
