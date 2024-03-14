@@ -96,7 +96,9 @@ function Signup() {
         </div>
 
         <div class="row" id="submit">
-          <button id='submit-button' type="submit">Signup</button>
+          <button id="submit-button" type="submit">
+            Signup
+          </button>
         </div>
       </form>
     </div>

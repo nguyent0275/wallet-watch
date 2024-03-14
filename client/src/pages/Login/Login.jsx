@@ -71,13 +71,15 @@ function Login() {
         </div>
 
         {error ? (
-          <div class='row' id='error'>
+          <div class="row" id="error">
             <p className="error-text">The provided credentials are incorrect</p>
           </div>
         ) : null}
 
         <div class="row" id="submit">
-          <button id='submit-button' type="submit">Login</button>
+          <button id="submit-button" type="submit">
+            Login
+          </button>
         </div>
       </form>
     </div>
