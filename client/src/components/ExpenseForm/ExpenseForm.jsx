@@ -1,23 +1,27 @@
+// imports
 import { useState } from "react";
 import { useMutation } from "@apollo/client";
 import { ADD_EXPENSE } from "../../utils/mutations";
 
+
 const ExpenseForm = ({ budgetId }) => {
+  // setting the initial states (.01 is the min value that the field takes)
   const [name, setName] = useState("");
   const [cost, setCost] = useState(0.01);
 
+  // giving the mutation functionality to the variable addExpense
   const [addExpense, { error }] = useMutation(ADD_EXPENSE);
 
-  console.log(typeof cost);
   // add errorhandling, inputting 0 will not add the expense but it will also not error out
   const handleFormSubmit = async () => {
     // event.preventDefault()
 
     try {
+      // running mutations with the provided variables as arguments
       const data = await addExpense({
         variables: { budgetId, name, cost },
       });
-      console.log(data);
+      console.log(data)
       setCost(0.01);
       setName("");
     } catch (err) {

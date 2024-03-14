@@ -2,10 +2,13 @@ import { useState } from "react";
 import { useMutation } from "@apollo/client";
 import { ADD_INCOME } from "../../utils/mutations";
 
+// budgetId is being passed from the ViewBudget.jsx
 const IncomeForm = ({ budgetId }) => {
+   // setting the initial states (.01 is the min value that the field takes)
   const [name, setName] = useState("");
   const [amount, setAmount] = useState(0.01);
 
+  // giving the mutation functionality to the variable addExpense
   const [addIncome, { error }] = useMutation(ADD_INCOME);
 
   console.log(typeof amount);
@@ -14,6 +17,7 @@ const IncomeForm = ({ budgetId }) => {
     // event.preventDefault()
 
     try {
+      // running mutations with the provided variables as arguments
       const data = await addIncome({
         variables: { budgetId, name, amount },
       });
