@@ -1,0 +1,6 @@
+nav ul {
+    display: flex;
+    justify-content: space-around;
+    font-size: 30px;
+    color: white;
+}
