@@ -11,7 +11,7 @@
 
 .row {
   display: flex;
-  padding: rem;
+  padding: 1rem;
 }
 
 .column {

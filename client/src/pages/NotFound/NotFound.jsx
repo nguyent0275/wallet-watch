@@ -8,11 +8,14 @@ import "./notfound.css"
 function NotFound() {
   let location = useLocation();
   return (
-    <div className="card bg-white card-rounded w-50">
-      <div className="card-header bg-dark text-center">
-        <h1>
+    <div class='row'>
+      <div class='column'>
+        <h1 class='text'>
           No match for <code>{location.pathname}</code>
         </h1>
+        <h3 class= 'text'>
+          Please return to the previous page.
+        </h3>
       </div>
     </div>
   );
