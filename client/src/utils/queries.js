@@ -37,6 +37,10 @@ export const QUERY_SINGLE_BUDGET = gql`
         name
         cost
         date
+        category {
+          _id
+          name
+        }
       }
       incomes {
         _id
@@ -47,6 +51,8 @@ export const QUERY_SINGLE_BUDGET = gql`
     }
   }
 `;
+
+
 
 export const QUERY_ME = gql`
   query me {
@@ -71,6 +77,15 @@ export const QUERY_ME = gql`
           date
         }
       }
+    }
+  }
+`;
+
+export const QUERY_ALL_CATEGORIES = gql`
+  query allCategories {
+    categories {
+      _id
+      name
     }
   }
 `;

@@ -45,7 +45,7 @@ type Mutation {
   addUser(firstName: String!, lastName: String!, email: String!, password: String!): Auth
   login(email: String!, password: String!): Auth
   addBudget(userId: ID! budgetMonth: String!): User
-  addExpense(budgetId: ID!, name: String!, cost: Int!): Budget
+  addExpense(budgetId: ID!, name: String!, cost: Int!, categoryId: ID!): Budget
   addIncome(budgetId: ID!, name: String!, amount: Int!): Budget
   removeBudget(budgetId: ID!): Budget
   removeExpense(budgetId: ID!, expenseId: ID!): Budget
