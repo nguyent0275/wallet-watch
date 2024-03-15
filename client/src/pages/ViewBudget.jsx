@@ -1,13 +1,11 @@
 //React Imports
 import { useParams } from "react-router-dom";
 import { useQuery } from "@apollo/client";
-import { QUERY_SINGLE_BUDGET } from "../../utils/queries";
+import { QUERY_SINGLE_BUDGET } from "../utils/queries";
 import { Popup } from "reactjs-popup";
-import ExpenseForm from "../../components/ExpenseForm/ExpenseForm";
-import IncomeForm from "../../components/IncomeForm/IncomeForm";
+import ExpenseForm from "../components/ExpenseForm/ExpenseForm";
+import IncomeForm from "../components/IncomeForm/IncomeForm";
 
-//CSS Imports
-import './viewbudget.css'
 
 // view a single budget based on the budget's _id and useParams()
 const ViewBudget = () => {
@@ -22,8 +20,7 @@ const ViewBudget = () => {
   }
   return (
     <>
-    <div>
-    <Popup
+      <Popup
         trigger={<button> Add Expense </button>}
         position="right center"
         modal
@@ -51,8 +48,6 @@ const ViewBudget = () => {
           </div>
         )}
       </Popup>
-    </div>
-      
       <h2>{budget.budgetMonth}</h2>
       <table>
         <caption>Expenses</caption>
