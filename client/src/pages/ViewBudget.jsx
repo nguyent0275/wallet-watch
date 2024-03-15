@@ -72,7 +72,7 @@ const ViewBudget = () => {
               <td>{expense.name}</td>
               <td>{expense.cost}</td>
               <td>{expense.category.name}</td>
-              <td><DeleteForm budget={budget} expense /></td>
+              <td><DeleteForm budget={budget} expense={expense} /></td>
             </tr>
           ))}
         </tbody>
