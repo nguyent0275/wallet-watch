@@ -21,8 +21,8 @@ const Home = () => {
               modal
             >
               {(close) => (
-                <div className="modal">
-                  <div className="content">
+                <div className="modal-container">
+                  <div className="modal-content">
                     <BudgetForm />
                     <button onClick={() => close()}>Close Modal</button>
                   </div>

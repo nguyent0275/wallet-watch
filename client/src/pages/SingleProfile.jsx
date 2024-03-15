@@ -8,6 +8,8 @@ import { QUERY_SINGLE_USER, QUERY_ME } from "../utils/queries";
 import ViewAllBudgets from "../components/ViewAllBudgets/ViewAllBudgets";
 import Auth from "../utils/auth";
 
+import "../App.css"
+
 // shows all the budgets of a single user
 // finds the user via their _id and useParams()
 // OR
@@ -32,7 +34,7 @@ const SingleProfile = () => {
   }
   return (
     <>
-      <h2>
+      <h2 className="user-name">
         {user.firstName} {user.lastName}
       </h2>
       <ViewAllBudgets budgets={budgets} />
@@ -42,10 +44,10 @@ const SingleProfile = () => {
         modal
       >
         {(close) => (
-          <div className="modal">
-            <div className="content">
+          <div className="modal-container">
+            <div className="modal-content">
               <BudgetForm userId={user._id} />
-              <button onClick={() => close()}>Close modal</button>
+              <button onClick={() => close()}>Close Modal</button>
             </div>
           </div>
         )}

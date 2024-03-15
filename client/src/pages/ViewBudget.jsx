@@ -5,6 +5,8 @@ import { Popup } from "reactjs-popup";
 import ExpenseForm from "../components/ExpenseForm/ExpenseForm";
 import IncomeForm from "../components/IncomeForm/IncomeForm";
 
+import "../App.css";
+
 // view a single budget based on the budget's _id and useParams()
 const ViewBudget = () => {
   const { budgetId } = useParams();
@@ -24,8 +26,8 @@ const ViewBudget = () => {
         modal
       >
         {(close) => (
-          <div className="modal">
-            <div className="content">
+          <div className="modal-container">
+            <div className="modal-content">
               <ExpenseForm budgetId={budget._id} />
               <button onClick={() => close()}>Close modal</button>
             </div>
@@ -38,8 +40,8 @@ const ViewBudget = () => {
         modal
       >
         {(close) => (
-          <div className="modal">
-            <div className="content">
+          <div className="modal-container">
+            <div className="modal-content">
               <IncomeForm budgetId={budget._id} />
               <button onClick={() => close()}>Close modal</button>
             </div>

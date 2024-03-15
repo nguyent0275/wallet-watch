@@ -11,10 +11,10 @@ const BudgetForm = ({ userId }) => {
   // addBudget is given the ADD_BUDGET mutation functionality
   const [addBudget, { error }] = useMutation(ADD_BUDGET)
 
-  const handleFormSubmit = async () => {
+  const handleFormSubmit = async (event) => {
     // add event as an arg for handleFormSubmit as well
     // will stop the page from refreshing (working as intended, so page will refresh with the addition of new budget)
-    // event.preventDefault()
+    event.preventDefault()
 
     // running the mutation with the provided variables as args
     try{
@@ -31,7 +31,7 @@ const BudgetForm = ({ userId }) => {
     <>
       <form onSubmit={handleFormSubmit}>
         <label>What is the name of your budget?</label>
-        <input type="text" id="budgetMonth" placeholder="Enter a month..." value={budgetMonth} onChange={(event) => setBudgetMonth(event.target.value)}></input>
+        <input type="text" id="budgetMonth" placeholder="Enter a budget name" value={budgetMonth} onChange={(event) => setBudgetMonth(event.target.value)}></input>
         <button type="submit">Submit</button>
         {error && (
           <div>Something went wrong... </div>
