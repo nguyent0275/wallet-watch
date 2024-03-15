@@ -37,7 +37,9 @@ function Signup() {
 
   return (
     <div class="signup">
-      <Link to="/login">← Go to Login</Link>
+      <div id="link">
+        <Link to="/login">← Go to Login</Link>
+      </div>
 
       <h2>Signup</h2>
       <form onSubmit={handleFormSubmit}>

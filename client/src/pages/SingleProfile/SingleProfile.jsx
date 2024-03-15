@@ -36,17 +36,17 @@ const SingleProfile = () => {
   }
   return (
     <>
-      <div class='row'>
+      <div class="row">
         <div>
           <h2 id="user">
             Welcome, {user.firstName} {user.lastName}
           </h2>
         </div>
+
         <div>
-          <ViewAllBudgets
-            budgets={budgets} 
-          />
+          <ViewAllBudgets budgets={budgets} />
         </div>
+
         <div>
           <Popup
             trigger={<button id="submit-button"> Add Budget </button>}
