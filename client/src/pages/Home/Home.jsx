@@ -33,10 +33,10 @@ const Home = () => {
               modal
             >
               {(close) => (
-                <div className="modal">
-                  <div className="content">
-                    <BudgetForm userId={user._id} />
-                    <button onClick={() => close()}>Close modal</button>
+                <div className="modal-container">
+                  <div className="modal-content">
+                    <BudgetForm userId={user._id}  />
+                    <button onClick={() => close()}>Close Modal</button>
                   </div>
                 </div>
               )}
