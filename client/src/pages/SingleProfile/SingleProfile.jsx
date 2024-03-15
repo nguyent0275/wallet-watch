@@ -36,7 +36,7 @@ const SingleProfile = () => {
   }
   return (
     <>
-      <div class="row">
+      <div className="row">
         <div>
           <h2 id="user">
             Welcome, {user.firstName} {user.lastName}

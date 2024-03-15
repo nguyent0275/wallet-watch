@@ -180,7 +180,95 @@ const resolvers = {
         { new: true }
       );
     },
+
+    // finds a budget by the id and updates the name
+    updateBudget: async (parent, { budgetId, budgetMonth }) => {
+      return await Budget.findOneAndUpdate(
+        { _id: budgetId },
+        { $set: { budgetMonth: budgetMonth } },
+        { new: true, runValidators: true }
+      );
+    },
+
+    // finds a budget and an expense by its _id then updates it
+    updateExpense: async (
+      parent,
+      { budgetId, expenseId, name, cost, categoryId }
+    ) => {
+      console.log(budgetId);
+      console.log(expenseId);
+      console.log(name);
+      console.log(cost);
+      console.log(categoryId);
+      return await Budget.findOneAndUpdate(
+        { _id: budgetId, expenses: { _id: expenseId } },
+        {
+          $set: {
+            expenses: [
+              {
+                name: name,
+                cost: cost,
+                category: {
+                  _id: categoryId,
+                },
+              },
+            ],
+          },
+        },
+        { new: true, runValidators: true }
+      );
+    },
+
+    // finds a budget and an income by its _id, then updates its
+    // update is returning null
+    updateIncome: async (
+      parent,
+      { budgetId, incomeId, name, amount, categoryId }
+    ) => {
+      return await Budget.findOneAndUpdate(
+        { _id: budgetId, incomes: { _id: incomeId } },
+        {
+          $set: {
+            incomes: {
+              name: name,
+              amount: amount,
+              category: {
+                _id: categoryId,
+              },
+            },
+          },
+        },
+        { new: true, runValidators: true }
+      );
+    },
   },
 };
 
 module.exports = resolvers;
+
+// // finds a budget and an expense by its _id then updates it
+// updateExpense: async (
+//   parent,
+//   { budgetId, expenseId, name, cost, categoryId }
+// ) => {
+//   console.log(budgetId);
+//   console.log(expenseId);
+//   console.log(name);
+//   console.log(cost);
+//   console.log(categoryId);
+//   return await Budget.findOneAndUpdate(
+//     { _id: budgetId, expenses: { _id: expenseId } },
+//     {
+//       $set: {
+//         expenses: [{
+//           name: name,
+//           cost: cost,
+//           category: {
+//             _id: categoryId
+//           }
+//         }]
+//       },
+//     },
+//     { new: true, runValidators: true }
+//   );
+// },
