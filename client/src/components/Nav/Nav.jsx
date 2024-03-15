@@ -46,15 +46,8 @@ function Nav() {
           <li className="mx-1">
             <Link className="nav-link" to="/signup">Signup</Link>
           </li>
-<<<<<<< HEAD:client/src/components/Nav.jsx
-          <li class="nav-item">
-            <a class="nav-link" href="#">
-              <Link to="/login">Login</Link>
-            </a>
-=======
           <li className="mx-1">
             <Link className="nav-link" to="/login">Login</Link>
->>>>>>> 79fc3b671c6e64d81b1945a66b3b7e24d24218be:client/src/components/Nav/Nav.jsx
           </li>
         </ul>
 
