@@ -18,6 +18,7 @@ const ViewBudget = () => {
   }
   return (
     <>
+    <button>Return to All Budget</button>
       <Popup
         trigger={<button> Add Expense </button>}
         position="right center"
