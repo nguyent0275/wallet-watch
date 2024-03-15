@@ -2,9 +2,11 @@
 import { useMutation } from "@apollo/client";
 import { REMOVE_EXPENSE } from "../utils/mutations";
 
-const DeleteForm = (budget, expense) => {
+const DeleteExpense = (budget) => {
 
-  const [removeExpense, { error }] = useMutation(REMOVE_EXPENSE);
+  const [removeExpense,
+    //  { error }
+    ] = useMutation(REMOVE_EXPENSE);
   console.log(budget)
 
   const budgetId = budget.budget._id
@@ -23,6 +25,7 @@ const DeleteForm = (budget, expense) => {
       const data = await removeExpense({
         variables: { budgetId, expenseId },
       });
+      console.log(data);
     } catch (err) {
       console.error(err);
     }
@@ -35,4 +38,4 @@ return (
 )
 };
 
-export default DeleteForm;
+export default DeleteExpense;

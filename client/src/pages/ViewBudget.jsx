@@ -5,8 +5,9 @@ import { QUERY_SINGLE_BUDGET } from "../utils/queries";
 import { Popup } from "reactjs-popup";
 import ExpenseForm from "../components/ExpenseForm/ExpenseForm";
 import IncomeForm from "../components/IncomeForm/IncomeForm";
-import DeleteForm from "../components/DeleteForm";
-
+import DeleteExpense from "../components/DeleteExpense";
+import DeleteIncome from "../components/DeleteIncome";
+import DeleteBudget from "../components/DeleteBudget";
 
 // view a single budget based on the budget's _id and useParams()
 const ViewBudget = () => {
@@ -28,6 +29,7 @@ const ViewBudget = () => {
     <a href="/user">
     <button>Return to All Budget</button>
     </a>
+    <DeleteBudget budget={budget} />
       <Popup
         trigger={<button> Add Expense </button>}
         position="right center"
@@ -72,7 +74,7 @@ const ViewBudget = () => {
               <td>{expense.name}</td>
               <td>{expense.cost}</td>
               <td>{expense.category.name}</td>
-              <td><DeleteForm budget={budget} expense={expense} /></td>
+              <td><DeleteExpense budget={budget} expense={expense} /></td>
             </tr>
           ))}
         </tbody>
@@ -90,7 +92,7 @@ const ViewBudget = () => {
               <td>{income.date}</td>
               <td>{income.name}</td>
               <td>{income.amount}</td>
-              <td></td>
+              <td><DeleteIncome budget={budget} income={income} /></td>
             </tr>
           ))}
         </tbody>
