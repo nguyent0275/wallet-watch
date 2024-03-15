@@ -1,6 +1,9 @@
+//React Imports
 import Button from 'react-bootstrap/Button';
-import Card from "react-bootstrap/Card";
+
+//CSS Imports
 import "./card.css";
+import Card from "react-bootstrap/Card";
 
 // https://react-bootstrap.netlify.app/docs/components/cards/
 
