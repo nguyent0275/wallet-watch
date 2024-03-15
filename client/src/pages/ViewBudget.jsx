@@ -1,9 +1,11 @@
+//React Imports
 import { useParams } from "react-router-dom";
 import { useQuery } from "@apollo/client";
 import { QUERY_SINGLE_BUDGET } from "../utils/queries";
 import { Popup } from "reactjs-popup";
 import ExpenseForm from "../components/ExpenseForm/ExpenseForm";
 import IncomeForm from "../components/IncomeForm/IncomeForm";
+
 
 // view a single budget based on the budget's _id and useParams()
 const ViewBudget = () => {
@@ -12,6 +14,7 @@ const ViewBudget = () => {
     variables: { budgetId: budgetId },
   });
   const budget = data?.budget || [];
+  console.log(budget);
   if (loading) {
     return <div>Loading... </div>;
   }
@@ -25,7 +28,7 @@ const ViewBudget = () => {
         {(close) => (
           <div className="modal">
             <div className="content">
-              <ExpenseForm />
+              <ExpenseForm budgetId={budget._id} />
               <button onClick={() => close()}>Close modal</button>
             </div>
           </div>
@@ -39,7 +42,7 @@ const ViewBudget = () => {
         {(close) => (
           <div className="modal">
             <div className="content">
-              <IncomeForm />
+              <IncomeForm budgetId={budget._id} />
               <button onClick={() => close()}>Close modal</button>
             </div>
           </div>
@@ -53,12 +56,14 @@ const ViewBudget = () => {
             <th>Date</th>
             <th>Name</th>
             <th>Cost</th>
+            <th>Category</th>
           </tr>
           {budget.expenses.map((expense, index) => (
             <tr key={index}>
               <td>{expense.date}</td>
               <td>{expense.name}</td>
               <td>{expense.cost}</td>
+              <td>{expense.category.name}</td>
             </tr>
           ))}
         </tbody>

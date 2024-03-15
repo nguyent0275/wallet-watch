@@ -6,16 +6,16 @@ import "./nav.css";
 
 // navbar component loads on every page
 function Nav() {
-  const styles = {
-    navbar: {
-      background: "black",
-      color: "green",
-    },
-    text: {
-      paddingLeft: '30px',
-      paddingRight: '30px',
-    },
-  };
+  // const styles = {
+  //   navbar: {
+  //     background: "black",
+  //     color: "green",
+  //   },
+  //   text: {
+  //     paddingLeft: '30px',
+  //     paddingRight: '30px',
+  //   },
+  // };
 
   function showNavigation() {
     // if user is logged in, return MyProfile, Home, and Logout
