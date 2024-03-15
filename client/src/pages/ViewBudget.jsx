@@ -5,7 +5,11 @@ import { QUERY_SINGLE_BUDGET } from "../utils/queries";
 import { Popup } from "reactjs-popup";
 import ExpenseForm from "../components/ExpenseForm/ExpenseForm";
 import IncomeForm from "../components/IncomeForm/IncomeForm";
+import DeleteExpense from "../components/DeleteExpense";
+import DeleteIncome from "../components/DeleteIncome";
+import DeleteBudget from "../components/DeleteBudget";
 
+import "../App.css";
 
 // view a single budget based on the budget's _id and useParams()
 const ViewBudget = () => {
@@ -15,19 +19,27 @@ const ViewBudget = () => {
   });
   const budget = data?.budget || [];
   console.log(budget);
+
+
+
   if (loading) {
     return <div>Loading... </div>;
   }
   return (
     <>
+    {/* redirects user back to their profile page with all budgets */}
+    <a href="/user">
+    <button>Return to All Budget</button>
+    </a>
+    <DeleteBudget budget={budget} />
       <Popup
         trigger={<button> Add Expense </button>}
         position="right center"
         modal
       >
         {(close) => (
-          <div className="modal">
-            <div className="content">
+          <div className="modal-container">
+            <div className="modal-content">
               <ExpenseForm budgetId={budget._id} />
               <button onClick={() => close()}>Close modal</button>
             </div>
@@ -40,8 +52,8 @@ const ViewBudget = () => {
         modal
       >
         {(close) => (
-          <div className="modal">
-            <div className="content">
+          <div className="modal-container">
+            <div className="modal-content">
               <IncomeForm budgetId={budget._id} />
               <button onClick={() => close()}>Close modal</button>
             </div>
@@ -64,6 +76,7 @@ const ViewBudget = () => {
               <td>{expense.name}</td>
               <td>{expense.cost}</td>
               <td>{expense.category.name}</td>
+              <td><DeleteExpense budget={budget} expense={expense} /></td>
             </tr>
           ))}
         </tbody>
@@ -81,6 +94,7 @@ const ViewBudget = () => {
               <td>{income.date}</td>
               <td>{income.name}</td>
               <td>{income.amount}</td>
+              <td><DeleteIncome budget={budget} income={income} /></td>
             </tr>
           ))}
         </tbody>

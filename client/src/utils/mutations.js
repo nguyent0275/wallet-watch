@@ -87,3 +87,42 @@ export const ADD_INCOME = gql`
     }
   }
 `;
+
+export const REMOVE_EXPENSE = gql`
+  mutation Mutation($budgetId: ID!, $expenseId: ID!) {
+    removeExpense(budgetId: $budgetId, expenseId: $expenseId) {
+      _id
+      budgetMonth
+      expenses {
+        _id
+        name
+        date
+        cost
+      }
+    }
+  }
+`;
+
+export const REMOVE_INCOME = gql`
+  mutation Mutation($budgetId: ID!, $incomeId: ID!) {
+    removeIncome(budgetId: $budgetId, incomeId: $incomeId) {
+      _id
+      budgetMonth
+      incomes {
+        _id
+        name
+        date
+        amount
+      }
+    }
+  }
+`;
+
+export const REMOVE_BUDGET = gql`
+  mutation RemoveBudget($budgetId: ID!) {
+    removeBudget(budgetId: $budgetId) {
+      _id
+      budgetMonth
+    }
+  }
+`;
