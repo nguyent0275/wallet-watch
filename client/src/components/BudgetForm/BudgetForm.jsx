@@ -24,7 +24,7 @@ const BudgetForm = ({ userId }) => {
       console.log(data)
       setBudgetMonth('')
       // if user is adding a budget from the homepage, it will redirect them to their profile page and show that new budget
-      window.location.replace('/user')
+      window.location.replace('/user/')
     }catch (err) {
     console.error(err)
     }
