@@ -1,9 +1,10 @@
 const CategoryOptions = (categories) => {
   console.log(categories);
-  if (categories.length) {
+  // no category object data, returns 
+  if (!categories) {
     return (
       <>
-        <h3>No Categories</h3>
+      <option>No Categories</option>
       </>
     );
   }
