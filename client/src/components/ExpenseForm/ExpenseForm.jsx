@@ -5,6 +5,7 @@ import { QUERY_ALL_CATEGORIES } from "../../utils/queries";
 import { ADD_EXPENSE } from "../../utils/mutations";
 import CategoryOptions from "../CategoryOptions";
 
+// budgetId is being pased from the viewBudget page
 const ExpenseForm = ({ budgetId }) => {
   // getting all categories from the backend
   const { loading, data } = useQuery(QUERY_ALL_CATEGORIES);
@@ -23,12 +24,6 @@ const ExpenseForm = ({ budgetId }) => {
     // event.preventDefault();
 
     try {
-      // console.log("test");
-      // console.log(budgetId);
-      // console.log(name);
-      // console.log(cost);
-      // console.log(categoryId);
-
       // running mutations with the provided variables as arguments
       const expenseData = await addExpense({
         variables: { budgetId, name, cost, categoryId },

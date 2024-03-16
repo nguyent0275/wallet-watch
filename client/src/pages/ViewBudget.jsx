@@ -6,9 +6,9 @@ import { QUERY_SINGLE_BUDGET } from "../utils/queries";
 import { Popup } from "reactjs-popup";
 import ExpenseForm from "../components/ExpenseForm/ExpenseForm";
 import IncomeForm from "../components/IncomeForm/IncomeForm";
-import DeleteExpense from "../components/DeleteExpense";
-import DeleteIncome from "../components/DeleteIncome";
 import DeleteBudget from "../components/DeleteBudget";
+import EditExpenseForm from "../components/EditExpense";
+import EditIncomeForm from "../components/EditIncome"
 
 import "../App.css";
 
@@ -79,7 +79,20 @@ const ViewBudget = () => {
               <td>{expense.cost}</td>
               <td>{expense.category.name}</td>
               <td>
-                <DeleteExpense budget={budget} expense={expense} />
+              <Popup
+                  trigger={<button> Edit </button>}
+                  position="right center"
+                  modal
+                >
+                  {(close) => (
+                    <div className="modal-container">
+                      <div className="modal-content">
+                        <EditExpenseForm budget={budget} expense={expense} />
+                        <button onClick={() => close()}>Close modal</button>
+                      </div>
+                    </div>
+                  )}
+                </Popup>
               </td>
             </tr>
           ))}
@@ -102,7 +115,20 @@ const ViewBudget = () => {
               <td>{income.name}</td>
               <td>{income.amount}</td>
               <td>
-                <DeleteIncome budget={budget} income={income} />
+              <Popup
+                  trigger={<button> Edit </button>}
+                  position="right center"
+                  modal
+                >
+                  {(close) => (
+                    <div className="modal-container">
+                      <div className="modal-content">
+                        <EditIncomeForm budget={budget} income={income} />
+                        <button onClick={() => close()}>Close modal</button>
+                      </div>
+                    </div>
+                  )}
+                </Popup>
               </td>
             </tr>
           ))}

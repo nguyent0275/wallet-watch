@@ -7,13 +7,13 @@ const DeleteIncome = (budget) => {
   const [removeIncome, 
     // { error }
   ] = useMutation(REMOVE_INCOME);
-  console.log(budget)
+  // console.log(budget)
 
   const budgetId = budget.budget._id
   const incomeId = budget.income._id
 
-  console.log(budgetId);
-  console.log(incomeId)
+  // console.log(budgetId);
+  // console.log(incomeId)
 
   const handleDelete = async (event) => {
     console.log("test");

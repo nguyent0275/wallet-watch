@@ -47,10 +47,6 @@ const IncomeForm = ({ budgetId }) => {
           value={amount}
           onChange={(event) => setAmount(parseFloat(event.target.value))}
         ></input>
-        <label>What category does it belong to?</label>
-        <select>
-          <option></option>
-        </select>
         <button type="submit">Submit</button>
         {error && <div>Something went wrong... </div>}
       </form>
