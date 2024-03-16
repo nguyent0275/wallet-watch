@@ -2,6 +2,7 @@
 import { useMutation } from "@apollo/client";
 import { REMOVE_BUDGET } from "../utils/mutations";
 
+// passes budget from the viewBudget.jsx
 const DeleteBudget = (budget) => {
 
   const [removeIncome,

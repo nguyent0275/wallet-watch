@@ -10,7 +10,8 @@ import DeleteBudget from "../components/DeleteBudget";
 import EditExpenseForm from "../components/EditExpense";
 import EditIncomeForm from "../components/EditIncome"
 
-import "../App.css";
+// doesnt do anything?
+// import "../App.css";
 
 // view a single budget based on the budget's _id and useParams()
 const ViewBudget = () => {
@@ -59,7 +60,7 @@ const ViewBudget = () => {
           </div>
         )}
       </Popup>
-      <h2>{budget.budgetMonth}</h2>
+      <h2>{budget.budgetMonth} {budget.budgetYear}</h2>
       <MDBTable>
         <caption>Expenses</caption>
         <MDBTableHead>

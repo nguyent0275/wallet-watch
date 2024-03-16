@@ -98,8 +98,8 @@ const resolvers = {
       return { token, user };
     },
     // creates a budget, then finds a user and assigns the budget to them
-    addBudget: async (parent, { userId, budgetMonth }) => {
-      const budgetData = await Budget.create({ budgetMonth });
+    addBudget: async (parent, { userId, budgetMonth, budgetYear }) => {
+      const budgetData = await Budget.create({ budgetMonth, budgetYear });
       console.log(budgetData);
       await User.findOneAndUpdate(
         {
@@ -180,10 +180,10 @@ const resolvers = {
     },
 
     // finds a budget by the id and updates the name
-    updateBudget: async (parent, { budgetId, budgetMonth }) => {
+    updateBudget: async (parent, { budgetId, budgetMonth, budgetYear }) => {
       return await Budget.findOneAndUpdate(
         { _id: budgetId },
-        { $set: { budgetMonth: budgetMonth } },
+        { $set: { budgetMonth: budgetMonth, budgetYear: budgetYear } },
         { new: true, runValidators: true }
       );
     },

@@ -33,12 +33,13 @@ export const ADD_USER = gql`
 `;
 
 export const ADD_BUDGET = gql`
-  mutation addBudget($userId: ID!, $budgetMonth: String!) {
-    addBudget(userId: $userId, budgetMonth: $budgetMonth) {
+  mutation addBudget($userId: ID!, $budgetMonth: String!, $budgetYear: Int!) {
+    addBudget(userId: $userId, budgetMonth: $budgetMonth, budgetYear: $budgetYear) {
       _id
       budgets {
         _id
         budgetMonth
+        budgetYear
       }
     }
   }
@@ -59,6 +60,7 @@ export const ADD_EXPENSE = gql`
     ) {
       _id
       budgetMonth
+      budgetYear
       expenses {
         _id
         date
@@ -78,6 +80,7 @@ export const ADD_INCOME = gql`
     addIncome(budgetId: $budgetId, name: $name, amount: $amount) {
       _id
       budgetMonth
+      budgetYear
       incomes {
         _id
         date
@@ -93,6 +96,7 @@ export const REMOVE_EXPENSE = gql`
     removeExpense(budgetId: $budgetId, expenseId: $expenseId) {
       _id
       budgetMonth
+      budgetYear
       expenses {
         _id
         name
@@ -108,6 +112,7 @@ export const REMOVE_INCOME = gql`
     removeIncome(budgetId: $budgetId, incomeId: $incomeId) {
       _id
       budgetMonth
+      budgetYear
       incomes {
         _id
         name
@@ -123,6 +128,7 @@ export const REMOVE_BUDGET = gql`
     removeBudget(budgetId: $budgetId) {
       _id
       budgetMonth
+      budgetYear
     }
   }
 `;
@@ -144,6 +150,7 @@ export const UPDATE_EXPENSE = gql`
     ) {
       _id
       budgetMonth
+      budgetYear
       expenses {
         _id
         name

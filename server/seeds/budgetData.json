@@ -1,10 +1,12 @@
 [
   {
-    "budgetMonth": "January 2024"
+    "budgetMonth": "January",
+    "budgetYear": 2024
   },
   {
     "userId": "65ecbb78b67d5e3e9942c425",
-    "budgetMonth": "February 2024",
+    "budgetMonth": "February",
+    "budgetYear": 2024,
     "expenses": [
       {
         "name": "Gas",
@@ -59,6 +61,7 @@
     ]
   },
   {
-    "budgetMonth": "March 2024"
+    "budgetMonth": "March",
+    "budgetYear": 2024
   }
 ]

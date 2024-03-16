@@ -6,6 +6,7 @@ import { UPDATE_EXPENSE } from "../utils/mutations";
 import CategoryOptions from "./CategoryOptions";
 import DeleteExpense from "./DeleteExpense";
 
+// passes income and budget from the viewBudget.jsx
 const EditExpenseForm = ({ budget, expense }) => {
 
   const { loading, data } = useQuery(QUERY_ALL_CATEGORIES);
@@ -61,7 +62,7 @@ const EditExpenseForm = ({ budget, expense }) => {
         ></input>
         <label>What category does it belong to?</label>
         <select
-          // value={categoryId}
+          defaultValue="default"
           placeholder="Choose a category"
           onChange={(event) => setCategoryId(event.target.value)}
         >

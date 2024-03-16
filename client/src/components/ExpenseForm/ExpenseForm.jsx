@@ -61,7 +61,7 @@ const ExpenseForm = ({ budgetId }) => {
         ></input>
         <label>What category does it belong to?</label>
         <select
-          // value={categoryId}
+          defaultValue="default"
           placeholder="Choose a category"
           onChange={(event) => setCategoryId(event.target.value)}
         >

@@ -2,6 +2,7 @@
 import { useMutation } from "@apollo/client";
 import { REMOVE_EXPENSE } from "../utils/mutations";
 
+// passes budget from the editExpense.jsx
 const DeleteExpense = (budget) => {
 
   const [removeExpense,

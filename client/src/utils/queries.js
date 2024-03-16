@@ -10,6 +10,7 @@ export const QUERY_SINGLE_USER = gql`
       budgets {
         _id
         budgetMonth
+        budgetYear
         expenses {
           _id
           name
@@ -32,6 +33,7 @@ export const QUERY_SINGLE_BUDGET = gql`
     budget(budgetId: $budgetId) {
       _id
       budgetMonth
+      budgetYear
       expenses {
         _id
         name
@@ -64,6 +66,7 @@ export const QUERY_ME = gql`
       budgets {
         _id
         budgetMonth
+        budgetYear
         expenses {
           _id
           name

@@ -14,7 +14,7 @@ const ViewAllBudgets = ({ budgets }) => {
         <Link key={budget._id} to={"/budget/" + budget._id} className="custom-link">
           <div className="custom-bullet">
             <li>
-            <h4>{budget.budgetMonth}</h4>
+            <h4>{budget.budgetMonth} {budget.budgetYear}</h4>
             </li>
           </div>
         </Link>
