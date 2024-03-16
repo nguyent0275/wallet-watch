@@ -25,12 +25,11 @@ const resolvers = {
         .populate({
           path: "budgets",
           populate: ["expenses", "incomes"],
-        });
-      // breaks page
-      // .populate({
-      //   path: "expenses",
-      //   populate: "category"
-      // });
+        })
+        // .populate({
+        //   path: "expenses",
+        //   populate: "category",
+        // });
     },
     // finds the logged in user data via tokens and context 'variable'
     me: async (parent, args, context) => {
@@ -40,12 +39,11 @@ const resolvers = {
           .populate({
             path: "budgets",
             populate: ["expenses", "incomes"],
-          });
-        // breaks page
-        // .populate({
-        //   path: "expenses",
-        //   populate: "category"
-        // });
+          })
+          // .populate({
+          //   path: "expenses",
+          //   populate: "category",
+          // });
       }
       // if no user is found, throw error
       throw AuthenticationError;

@@ -26,7 +26,7 @@ const MonthOptions = () => {
     <>
       {months &&
         months.map((month) => (
-          <option key={month} value={month}>
+          <option id={month} key={month} value={month}>
             {month}
           </option>
         ))}
