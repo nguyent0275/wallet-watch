@@ -1,14 +1,18 @@
+// categories are passed from the editExpense.jsx
 const CategoryOptions = (categories) => {
   console.log(categories);
-  if (categories.length) {
+  // no category object data, returns 
+  if (!categories) {
     return (
       <>
-        <h3>No Categories</h3>
+      <option>No Categories</option>
       </>
     );
   }
   return (
     <>
+    {/* add a disabled value option, to combat state not being read on the inital value i.e "Bill/Utilities" */}
+          <option disabled value="default"> -- Choose a category -- </option>
       {categories &&
         categories.categories.map((category) => (
           <option value={category._id} key={category._id}>{category.name}</option>

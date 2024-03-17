@@ -3,8 +3,9 @@ import { useQuery, useMutation } from "@apollo/client";
 import { useState } from "react";
 import { QUERY_ALL_CATEGORIES } from "../../utils/queries";
 import { ADD_EXPENSE } from "../../utils/mutations";
-import CategoryOptions from "../CategoryOptions";
+import CategoryOptions from "../Dropdowns/CategoryOptions";
 
+// budgetId is being pased from the viewBudget page
 const ExpenseForm = ({ budgetId }) => {
   // getting all categories from the backend
   const { loading, data } = useQuery(QUERY_ALL_CATEGORIES);
@@ -19,18 +20,10 @@ const ExpenseForm = ({ budgetId }) => {
   const [addExpense, { error }] = useMutation(ADD_EXPENSE);
 
   // add errorhandling, inputting 0 will not add the expense but it will also not error out
-  // initial state is blank or empty, need to change the state to get value
-  // categoryid will return blank if you try and use the first option without changing
   const handleFormSubmit = async () => {
     // event.preventDefault();
 
     try {
-      console.log("test");
-      console.log(budgetId);
-      console.log(name);
-      console.log(cost);
-      console.log(categoryId);
-
       // running mutations with the provided variables as arguments
       const expenseData = await addExpense({
         variables: { budgetId, name, cost, categoryId },
@@ -68,7 +61,8 @@ const ExpenseForm = ({ budgetId }) => {
         ></input>
         <label>What category does it belong to?</label>
         <select
-          // value={categoryId}
+          defaultValue="default"
+          placeholder="Choose a category"
           onChange={(event) => setCategoryId(event.target.value)}
         >
           <CategoryOptions categories={categories} />

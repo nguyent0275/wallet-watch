@@ -1,12 +1,10 @@
-
-import { useState } from "react";
 import { useMutation } from "@apollo/client";
 import { ADD_BUDGET } from "../../utils/mutations";
+import MonthOptions from "../Dropdowns/MonthOptions";
+import YearOptions from "../Dropdowns/YearOptions";
 
 // userId is being passed from the SingleProfile.jsx
 const BudgetForm = ({ userId }) => {
-  // setting initial states
-  const [budgetMonth, setBudgetMonth] = useState('')
 
   // addBudget is given the ADD_BUDGET mutation functionality
   const [addBudget, { error }] = useMutation(ADD_BUDGET)
@@ -18,11 +16,14 @@ const BudgetForm = ({ userId }) => {
 
     // running the mutation with the provided variables as args
     try{
+      let budgetMonth = document.getElementById('month-dropdown').value
+      let budgetYear = parseFloat(document.getElementById('year-dropdown').value)
       const { data } = await addBudget({
-        variables: {userId, budgetMonth}
+        variables: {userId, budgetMonth, budgetYear}
       })
       console.log(data)
-      setBudgetMonth('')
+      // if user is adding a budget from the homepage, it will redirect them to their profile page and show that new budget
+      window.location.replace('/user/')
     }catch (err) {
     console.error(err)
     }
@@ -30,8 +31,14 @@ const BudgetForm = ({ userId }) => {
   return (
     <>
       <form onSubmit={handleFormSubmit}>
-        <label>What is the name of your budget?</label>
-        <input type="text" id="budgetMonth" placeholder="Enter a budget name" value={budgetMonth} onChange={(event) => setBudgetMonth(event.target.value)}></input>
+        <label>Month</label>
+        <select id="month-dropdown">
+          <MonthOptions />
+        </select>
+        <label>Year</label>
+        <select id="year-dropdown">
+          <YearOptions />
+        </select>
         <button type="submit">Submit</button>
         {error && (
           <div>Something went wrong... </div>
