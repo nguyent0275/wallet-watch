@@ -1,17 +1,14 @@
-// import { useState } from "react";
 import { useMutation } from "@apollo/client";
-import { REMOVE_BUDGET } from "../utils/mutations";
+import { REMOVE_BUDGET } from "../../utils/mutations";
 
+// passes budget from the viewBudget.jsx
 const DeleteBudget = (budget) => {
 
   const [removeIncome,
     //  { error }
   ] = useMutation(REMOVE_BUDGET);
-  // console.log(budget)
 
   const budgetId = budget.budget._id
-
-  // console.log(budgetId);
 
   const handleDelete = async (event) => {
     console.log("test");

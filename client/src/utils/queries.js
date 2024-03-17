@@ -10,6 +10,7 @@ export const QUERY_SINGLE_USER = gql`
       budgets {
         _id
         budgetMonth
+        budgetYear
         expenses {
           _id
           name
@@ -32,6 +33,7 @@ export const QUERY_SINGLE_BUDGET = gql`
     budget(budgetId: $budgetId) {
       _id
       budgetMonth
+      budgetYear
       expenses {
         _id
         name
@@ -52,8 +54,6 @@ export const QUERY_SINGLE_BUDGET = gql`
   }
 `;
 
-
-
 export const QUERY_ME = gql`
   query me {
     me {
@@ -64,6 +64,7 @@ export const QUERY_ME = gql`
       budgets {
         _id
         budgetMonth
+        budgetYear
         expenses {
           _id
           name
@@ -88,4 +89,31 @@ export const QUERY_ALL_CATEGORIES = gql`
       name
     }
   }
+`;
+
+export const QUERY_CURRENT_BUDGET = gql`
+query Query($userId: ID!, $budgetMonth: String!, $budgetYear: Int!) {
+  currentMonthBudget(userId: $userId, budgetMonth: $budgetMonth, budgetYear: $budgetYear) {
+    _id
+    budgetMonth
+    budgetYear
+    userId
+    expenses {
+      _id
+      name
+      date
+      cost
+      category {
+        _id
+        name
+      }
+    }
+    incomes {
+      _id
+      name
+      amount
+    }
+  }
+}
+
 `;

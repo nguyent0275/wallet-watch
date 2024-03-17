@@ -1,4 +1,5 @@
 const MonthOptions = () => {
+  // creates an array of months
   const months = [
     "January",
     "February",
@@ -14,10 +15,11 @@ const MonthOptions = () => {
     "December",
   ];
 
+  // if the array is empty, gives an error message
   if (!months.length) {
     return (
       <>
-        <option>No Months</option>
+        <option>Error</option>
       </>
     );
   }
