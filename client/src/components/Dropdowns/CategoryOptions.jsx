@@ -1,6 +1,6 @@
 // categories are passed from the editExpense.jsx
 const CategoryOptions = (categories) => {
-  console.log(categories);
+  // console.log(categories);
   // no category object data, returns 
   if (!categories) {
     return (

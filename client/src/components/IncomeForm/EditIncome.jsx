@@ -6,28 +6,49 @@ import DeleteIncome from "./DeleteIncome";
 
 // passes income and budget from the viewBudget.jsx
 const EditIncomeForm = ({ budget, income }) => {
-
-  const incomeId = income._id
-  const budgetId = budget._id
+  const incomeId = income._id;
+  const budgetId = budget._id;
 
   const [name, setName] = useState(income.name);
   const [amount, setAmount] = useState(income.amount);
+  const [errorMessage, setErrorMessage] = useState("");
 
   const [updateExpense, { error }] = useMutation(UPDATE_INCOME);
 
   const handleFormSubmit = async () => {
     try {
       // event.preventDefault()
-      console.log(budgetId)
-      console.log(income)
-      const incomeData = await updateExpense({
-        variables: { budgetId, incomeId, name, amount},
+      await updateExpense({
+        variables: { budgetId, incomeId, name, amount },
       });
-      console.log(incomeData);
       setAmount();
       setName("");
     } catch (err) {
       console.error(err);
+    }
+  };
+
+  // on mouseLeave of the field, will check for input and serve an error message
+  const handleEmptyName = (e) => {
+    const { target } = e;
+    const inputValue = target.value;
+
+    if (!inputValue) {
+      setErrorMessage("Please enter a name");
+    } else {
+      setErrorMessage("");
+    }
+  };
+
+  // on mouseLeave of the field, will check for input and serve an error message
+  const handleEmptyAmount = (e) => {
+    const { target } = e;
+    const inputValue = target.value;
+
+    if (!inputValue || inputValue === 0) {
+      setErrorMessage("Please enter a valid number");
+    } else {
+      setErrorMessage("");
     }
   };
 
@@ -41,6 +62,7 @@ const EditIncomeForm = ({ budget, income }) => {
           placeholder="Enter name of the income..."
           value={name}
           onChange={(event) => setName(event.target.value)}
+          onMouseLeave={handleEmptyName}
         ></input>
         <label>What is the amount of the income?</label>
         <input
@@ -49,14 +71,19 @@ const EditIncomeForm = ({ budget, income }) => {
           placeholder="Enter the income amount..."
           value={amount}
           onChange={(event) => setAmount(parseFloat(event.target.value))}
+          onMouseLeave={handleEmptyAmount}
         ></input>
         <button type="submit">Submit</button>
-        {error && <div>Something went wrong... </div>}
+        {errorMessage && <div id="errorMessage">{errorMessage}</div>}
+        {error && (
+          <div id="error">
+            Something went horribly wrong. Please contact support
+          </div>
+        )}
       </form>
       <DeleteIncome budget={budget} income={income} />
     </>
   );
 };
-
 
 export default EditIncomeForm;
