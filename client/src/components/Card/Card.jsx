@@ -1,5 +1,6 @@
 //React Imports
 import Button from "react-bootstrap/Button";
+import { Link } from "react-router-dom";
 
 //CSS Imports
 import "./card.css";
@@ -26,7 +27,9 @@ const InfoCard = () => {
           <Card.Title>Take charge of your finances</Card.Title>
           <Card.Text className=".card-text">{cardParagraph1}</Card.Text>
           <Card.Text className=".card-text">{cardParagraph2}</Card.Text>
+          <Link to="/signup">
           <Button variant="dark">Get Started!</Button>
+          </Link>
         </Card.Body>
       </Card>
     </div>
