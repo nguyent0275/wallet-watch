@@ -2,7 +2,7 @@
   font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
     "Lucida Sans", Arial, sans-serif;
   font-size: 1.25rem;
-  color: white;
+  color: rgba(206, 147, 0, 0.973);
 }
 
 .login h2 {
@@ -24,6 +24,10 @@
   font-size: 1.25rem;
 }
 
+#link {
+  padding-left: 1rem;
+}
+
 #submit {
   width: 10rem;
   padding: 1rem;
@@ -32,7 +36,7 @@
 
 #submit-button {
   background: #555555;
-  color: #fff;
+  color: white;
   border: 1px solid #eee;
   border-radius: 20px;
   box-shadow: 5px 5px 5px #eee;

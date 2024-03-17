@@ -1,14 +1,16 @@
+//React Imports
 import { Navigate, useParams } from "react-router-dom";
 // import { PieChart } from "react-chartkick";
 import "chartkick/chart.js";
 import { Popup } from "reactjs-popup";
-import BudgetForm from "../components/BudgetForm/BudgetForm";
+import BudgetForm from "../../components/BudgetForm/BudgetForm";
 import { useQuery } from "@apollo/client";
-import { QUERY_SINGLE_USER, QUERY_ME } from "../utils/queries";
-import ViewAllBudgets from "../components/ViewAllBudgets/ViewAllBudgets";
-import Auth from "../utils/auth";
+import { QUERY_SINGLE_USER, QUERY_ME } from "../../utils/queries";
+import ViewAllBudgets from "../../components/ViewAllBudgets/ViewAllBudgets";
+import Auth from "../../utils/auth";
 
-import "../App.css"
+// CSS Imports
+import "./singleprofile.css";
 
 // shows all the budgets of a single user
 // finds the user via their _id and useParams()
@@ -34,24 +36,34 @@ const SingleProfile = () => {
   }
   return (
     <>
-      <h2 className="user-name">
-        {user.firstName} {user.lastName}
-      </h2>
-      <ViewAllBudgets budgets={budgets} />
-      <Popup
-        trigger={<button> Add Budget </button>}
-        position="right center"
-        modal
-      >
-        {(close) => (
-          <div className="modal-container">
-            <div className="modal-content">
-              <BudgetForm userId={user._id} />
-              <button onClick={() => close()}>Close Modal</button>
-            </div>
-          </div>
-        )}
-      </Popup>
+      <div class="row">
+        <div>
+          <h2 id="user">
+            Welcome, {user.firstName} {user.lastName}
+          </h2>
+        </div>
+
+        <div>
+          <ViewAllBudgets budgets={budgets} />
+        </div>
+
+        <div>
+          <Popup
+            trigger={<button id="submit-button"> Add Budget </button>}
+            position="right center"
+            modal
+          >
+            {(close) => (
+              <div className="modal">
+                <div className="content">
+                  <BudgetForm userId={user._id} />
+                  <button onClick={() => close()}>Close modal</button>
+                </div>
+              </div>
+            )}
+          </Popup>
+        </div>
+      </div>
     </>
   );
 };

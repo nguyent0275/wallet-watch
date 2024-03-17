@@ -1,0 +1,29 @@
+.row {
+  color: white;
+  display: flex;
+  padding: 1rem;
+}
+
+#budget {
+  padding-left: 1rem;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+}
+
+#user {
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+  font-size: 3rem;
+  padding: 1rem;
+  color: rgba(206, 147, 0, 0.973);
+}
+
+#submit-button {
+  padding-left: 1rem;
+  background: #555555;
+  color: #fff;
+  border: 1px solid #eee;
+  border-radius: 20px;
+  box-shadow: 5px 5px 5px #eee;
+  text-shadow: none;
+}
