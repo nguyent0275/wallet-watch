@@ -3,35 +3,31 @@ import { REMOVE_INCOME } from "../../utils/mutations";
 
 // passes budget from the editIncome.jsx
 const DeleteIncome = (budget) => {
-
-  const [removeIncome, 
+  const [
+    removeIncome,
     // { error }
   ] = useMutation(REMOVE_INCOME);
 
-  const budgetId = budget.budget._id
-  const incomeId = budget.income._id
+  const budgetId = budget.budget._id;
+  const incomeId = budget.income._id;
 
-  const handleDelete = async (event) => {
-    console.log("test");
-    event.preventDefault();
+  const handleDelete = async () => {
+    // event.preventDefault();
 
     try {
-      console.log("test");
-      console.log(budget);
-      const data = await removeIncome({
+      await removeIncome({
         variables: { budgetId, incomeId },
       });
-      console.log(data);
     } catch (err) {
       console.error(err);
     }
   };
 
-return (
+  return (
     <>
-    <button onClick={handleDelete}>Delete</button>
+      <button onClick={handleDelete}>Delete</button>
     </>
-)
+  );
 };
 
 export default DeleteIncome;

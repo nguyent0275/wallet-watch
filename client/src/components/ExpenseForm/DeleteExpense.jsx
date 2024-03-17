@@ -11,17 +11,13 @@ const DeleteExpense = (budget) => {
   const budgetId = budget.budget._id
   const expenseId = budget.expense._id
 
-  const handleDelete = async (event) => {
-    console.log("test");
-    event.preventDefault();
+  const handleDelete = async () => {
+    // event.preventDefault();
 
     try {
-      console.log("test");
-      console.log(budget);
-      const data = await removeExpense({
+      await removeExpense({
         variables: { budgetId, expenseId },
       });
-      console.log(data);
     } catch (err) {
       console.error(err);
     }
