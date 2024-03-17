@@ -25,11 +25,11 @@ const resolvers = {
         .populate({
           path: "budgets",
           populate: ["expenses", "incomes"],
-        })
-        // .populate({
-        //   path: "expenses",
-        //   populate: "category",
-        // });
+        });
+      // .populate({
+      //   path: "expenses",
+      //   populate: "category",
+      // });
     },
     // finds the logged in user data via tokens and context 'variable'
     me: async (parent, args, context) => {
@@ -39,11 +39,11 @@ const resolvers = {
           .populate({
             path: "budgets",
             populate: ["expenses", "incomes"],
-          })
-          // .populate({
-          //   path: "expenses",
-          //   populate: "category",
-          // });
+          });
+        // .populate({
+        //   path: "expenses",
+        //   populate: "category",
+        // });
       }
       // if no user is found, throw error
       throw AuthenticationError;
@@ -67,6 +67,19 @@ const resolvers = {
     // find all categories and their _id
     categories: async () => {
       return await Category.find({});
+    },
+    // finds the budget for the current logged in user based on the current month and year
+    currentMonthBudget: async (parent, { userId, budgetMonth, budgetYear }) => {
+      return await Budget.findOne({
+        userId: userId,
+        budgetMonth: budgetMonth,
+        budgetYear: budgetYear,
+      })
+        .populate(["expenses", "incomes"])
+        .populate({
+          path: "expenses",
+          populate: "category",
+        });
     },
   },
   Mutation: {
@@ -99,7 +112,11 @@ const resolvers = {
     },
     // creates a budget, then finds a user and assigns the budget to them
     addBudget: async (parent, { userId, budgetMonth, budgetYear }) => {
-      const budgetData = await Budget.create({ budgetMonth, budgetYear });
+      const budgetData = await Budget.create({
+        budgetMonth,
+        budgetYear,
+        userId,
+      });
       console.log(budgetData);
       await User.findOneAndUpdate(
         {
@@ -109,7 +126,7 @@ const resolvers = {
           $addToSet: {
             budgets: {
               _id: budgetData._id,
-              _userId: userId,
+              userId: userId,
             },
           },
         },

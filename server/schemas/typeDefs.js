@@ -15,6 +15,7 @@ type Category {
 
 type Budget {
   _id: ID
+  userId: ID
   budgetMonth: String
   budgetYear: Int
   expenses: [Expense]
@@ -62,6 +63,7 @@ type Query {
   categories: [Category]
   budgets: [Budget]
   budget(budgetId: ID!): Budget
+  currentMonthBudget(userId: ID!, budgetMonth: String!, budgetYear: Int!): Budget
 }
 
 `;
