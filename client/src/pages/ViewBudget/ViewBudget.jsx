@@ -10,8 +10,8 @@ import DeleteBudget from "../../components/BudgetForm/DeleteBudget";
 import EditExpenseForm from "../../components/ExpenseForm/EditExpense";
 import EditIncomeForm from "../../components/IncomeForm/EditIncome"
 
-// doesnt do anything?
-// import "../App.css";
+
+import "../SingleProfile/Singleprofile.css";
 
 // view a single budget based on the budget's _id and useParams()
 const ViewBudget = () => {
@@ -41,7 +41,7 @@ const ViewBudget = () => {
           <div className="modal-container">
             <div className="modal-content">
               <ExpenseForm budgetId={budget._id} />
-              <button onClick={() => close()}>Close modal</button>
+              <button onClick={() => close()}>Close Modal</button>
             </div>
           </div>
         )}

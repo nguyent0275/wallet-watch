@@ -32,9 +32,9 @@ function Nav() {
           <li className="mx-1">
             <Link className="nav-link" to="/">Home</Link>
           </li>
-          <li className="mx-1">
+          {/* <li className="mx-1">
             <Link className="nav-link" to="/signup">Signup</Link>
-          </li>
+          </li> */}
           <li className="mx-1">
             <Link className="nav-link" to="/login">Login</Link>
           </li>
