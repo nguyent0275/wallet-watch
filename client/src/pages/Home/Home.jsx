@@ -15,7 +15,7 @@ import CurrentBudget from "../../components/CurrentBudget/CurrentBudget";
 const Home = () => {
   const { loading, data } = useQuery(QUERY_ME);
   const user = data?.me || [];
-  // console.log(user);
+  console.log(user);
   const budgets = user.budgets;
   console.log(budgets);
 
@@ -30,6 +30,15 @@ const Home = () => {
   if (loading) {
     return <div>Loading... </div>;
   }
+
+  if (user.length === 0)
+    return (
+      <>
+        <div id="card-container">
+          <Card></Card>
+        </div>
+      </>
+    );
 
   // if user is logged in and has no budget
   if ((Auth.loggedIn() && budgets.length === 0) || undefined) {
@@ -96,13 +105,6 @@ const Home = () => {
   //     <AllBudgetSpending />
   //   </>
   // );
-  return (
-    <>
-      <div id="card-container">
-        <Card></Card>
-      </div>
-    </>
-  );
 };
 
 export default Home;
