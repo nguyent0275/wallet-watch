@@ -6,7 +6,6 @@ import YearOptions from "../Dropdowns/YearOptions";
 
 // userId is being passed from the SingleProfile.jsx
 const BudgetForm = ({ user }) => {
-  console.log(user);
   const userId = user._id;
   const userBudgetsArray = user.budgets;
 
