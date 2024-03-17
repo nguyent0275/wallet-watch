@@ -33,7 +33,6 @@ type Income {
   name: String
   date: String
   amount: Int
-  category: Category
 }
 
 type Auth {
@@ -50,6 +49,9 @@ type Mutation {
   removeBudget(budgetId: ID!): Budget
   removeExpense(budgetId: ID!, expenseId: ID!): Budget
   removeIncome(budgetId: ID!, incomeId: ID!): Budget
+  updateBudget(budgetId: ID!, budgetMonth: String): Budget
+  updateExpense(budgetId: ID!, expenseId: ID!, name: String, cost: Int, categoryId: ID): Budget
+  updateIncome(budgetId: ID!, incomeId: ID!,  name: String, amount: Int): Budget
 }
 
 type Query {

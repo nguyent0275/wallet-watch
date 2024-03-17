@@ -25,12 +25,11 @@ const resolvers = {
         .populate({
           path: "budgets",
           populate: ["expenses", "incomes"],
-        });
-      // breaks page
-      // .populate({
-      //   path: "expenses",
-      //   populate: "category"
-      // });
+        })
+        // .populate({
+        //   path: "expenses",
+        //   populate: "category",
+        // });
     },
     // finds the logged in user data via tokens and context 'variable'
     me: async (parent, args, context) => {
@@ -40,12 +39,11 @@ const resolvers = {
           .populate({
             path: "budgets",
             populate: ["expenses", "incomes"],
-          });
-        // breaks page
-        // .populate({
-        //   path: "expenses",
-        //   populate: "category"
-        // });
+          })
+          // .populate({
+          //   path: "expenses",
+          //   populate: "category",
+          // });
       }
       // if no user is found, throw error
       throw AuthenticationError;
@@ -178,6 +176,52 @@ const resolvers = {
         { _id: budgetId },
         { $pull: { incomes: { _id: incomeId } } },
         { new: true }
+      );
+    },
+
+    // finds a budget by the id and updates the name
+    updateBudget: async (parent, { budgetId, budgetMonth }) => {
+      return await Budget.findOneAndUpdate(
+        { _id: budgetId },
+        { $set: { budgetMonth: budgetMonth } },
+        { new: true, runValidators: true }
+      );
+    },
+
+    // finds a budget and an expense by its _id then updates it
+    // https://www.mongodb.com/docs/manual/reference/operator/update/positional/#update-documents-in-an-array
+    // uses positional operator "$"
+    updateExpense: async (
+      parent,
+      { budgetId, expenseId, name, cost, categoryId }
+    ) => {
+      return await Budget.findOneAndUpdate(
+        { _id: budgetId, "expenses._id": expenseId },
+        {
+          // the $ matches the expense with the expenseId provided and allows access to all the embedded documents
+          // kind of like an index [], but it knows which index based on the filter
+          $set: {
+            "expenses.$.name": name,
+            "expenses.$.cost": cost,
+            "expenses.$.category": categoryId,
+          },
+        },
+        { new: true, runValidators: true }
+      );
+    },
+
+    // finds a budget and an income by its _id, then updates its
+    // update is returning null
+    updateIncome: async (parent, { budgetId, incomeId, name, amount }) => {
+      return await Budget.findOneAndUpdate(
+        { _id: budgetId, "incomes._id": incomeId },
+        {
+          $set: {
+            "incomes.$.name": name,
+            "incomes.$.amount": amount,
+          },
+        },
+        { new: true, runValidators: true }
       );
     },
   },

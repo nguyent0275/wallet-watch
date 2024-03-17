@@ -58,10 +58,6 @@ const budgetSchema = new Schema({
         required: true,
         min: 0.01,
       },
-      category: {
-        type: Schema.Types.ObjectId,
-        ref: "Category",
-      },
     },
   ],
 });

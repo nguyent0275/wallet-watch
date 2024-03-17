@@ -1,13 +1,14 @@
 //React Imports
+import { MDBTable, MDBTableHead, MDBTableBody } from "mdb-react-ui-kit";
 import { useParams } from "react-router-dom";
 import { useQuery } from "@apollo/client";
 import { QUERY_SINGLE_BUDGET } from "../utils/queries";
 import { Popup } from "reactjs-popup";
 import ExpenseForm from "../components/ExpenseForm/ExpenseForm";
 import IncomeForm from "../components/IncomeForm/IncomeForm";
-import DeleteExpense from "../components/DeleteExpense";
-import DeleteIncome from "../components/DeleteIncome";
 import DeleteBudget from "../components/DeleteBudget";
+import EditExpenseForm from "../components/EditExpense";
+import EditIncomeForm from "../components/EditIncome"
 
 import "../App.css";
 
@@ -20,18 +21,16 @@ const ViewBudget = () => {
   const budget = data?.budget || [];
   console.log(budget);
 
-
-
   if (loading) {
     return <div>Loading... </div>;
   }
   return (
     <>
-    {/* redirects user back to their profile page with all budgets */}
-    <a href="/user">
-    <button>Return to All Budget</button>
-    </a>
-    <DeleteBudget budget={budget} />
+      {/* redirects user back to their profile page with all budgets */}
+      <a href="/user">
+        <button>Return to All Budget</button>
+      </a>
+      <DeleteBudget budget={budget} />
       <Popup
         trigger={<button> Add Expense </button>}
         position="right center"
@@ -61,44 +60,80 @@ const ViewBudget = () => {
         )}
       </Popup>
       <h2>{budget.budgetMonth}</h2>
-      <table>
+      <MDBTable>
         <caption>Expenses</caption>
-        <tbody>
+        <MDBTableHead>
           <tr>
             <th>Date</th>
             <th>Name</th>
             <th>Cost</th>
             <th>Category</th>
+            <th>Edit</th>
           </tr>
+        </MDBTableHead>
+        <MDBTableBody>
           {budget.expenses.map((expense, index) => (
             <tr key={index}>
               <td>{expense.date}</td>
               <td>{expense.name}</td>
               <td>{expense.cost}</td>
               <td>{expense.category.name}</td>
-              <td><DeleteExpense budget={budget} expense={expense} /></td>
+              <td>
+              <Popup
+                  trigger={<button> Edit </button>}
+                  position="right center"
+                  modal
+                >
+                  {(close) => (
+                    <div className="modal-container">
+                      <div className="modal-content">
+                        <EditExpenseForm budget={budget} expense={expense} />
+                        <button onClick={() => close()}>Close modal</button>
+                      </div>
+                    </div>
+                  )}
+                </Popup>
+              </td>
             </tr>
           ))}
-        </tbody>
-      </table>
-      <table>
+        </MDBTableBody>
+      </MDBTable>
+      <MDBTable>
         <caption>Incomes</caption>
-        <tbody>
+        <MDBTableHead>
           <tr>
             <th>Date</th>
             <th>Name</th>
             <th>Amount</th>
+            <th>Edit</th>
           </tr>
+        </MDBTableHead>
+        <MDBTableBody>
           {budget.incomes.map((income, index) => (
             <tr key={index}>
               <td>{income.date}</td>
               <td>{income.name}</td>
               <td>{income.amount}</td>
-              <td><DeleteIncome budget={budget} income={income} /></td>
+              <td>
+              <Popup
+                  trigger={<button> Edit </button>}
+                  position="right center"
+                  modal
+                >
+                  {(close) => (
+                    <div className="modal-container">
+                      <div className="modal-content">
+                        <EditIncomeForm budget={budget} income={income} />
+                        <button onClick={() => close()}>Close modal</button>
+                      </div>
+                    </div>
+                  )}
+                </Popup>
+              </td>
             </tr>
           ))}
-        </tbody>
-      </table>
+        </MDBTableBody>
+      </MDBTable>
     </>
   );
 };

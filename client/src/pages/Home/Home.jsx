@@ -8,7 +8,7 @@ import "./home.css";
 import Auth from "../../utils/auth";
 import "reactjs-popup/dist/index.css";
 import { useQuery } from "@apollo/client";
-import { QUERY_ME } from "../../utils/queries"
+import { QUERY_ME } from "../../utils/queries";
 
 const Home = () => {
 
