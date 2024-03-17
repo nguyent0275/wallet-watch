@@ -1,6 +1,6 @@
 import { useQuery } from "@apollo/client";
 import { QUERY_CURRENT_BUDGET } from "../../utils/queries";
-import CurrentBudgetChartData from "./CurrentBudgetChartData"
+import CurrentBudgetChartData from "./CurrentBudgetChartData";
 
 // getting user from Home.jsx
 const CurrentBudget = (user) => {
@@ -61,9 +61,20 @@ const CurrentBudget = (user) => {
   });
   const currentMonthData = data?.currentMonthBudget;
 
+  // conditional rendering
+  // if data is still being retrieved
   if (loading) {
     return <div>Loading... </div>;
   }
+  // if there is no current month data
+  if (currentMonthData === null) {
+    return (
+      <>
+        <div>No Budget for the Current Month</div>
+      </>
+    );
+  }
+  // returns data and charts for current month
   return (
     <>
       <CurrentBudgetChartData budget={currentMonthData} />
