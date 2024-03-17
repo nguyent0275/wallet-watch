@@ -1,16 +1,19 @@
 //React Imports
-import { Navigate, useParams } from "react-router-dom";
-// import { PieChart } from "react-chartkick";
-import "chartkick/chart.js";
 import { Popup } from "reactjs-popup";
-import BudgetForm from "../../components/BudgetForm/BudgetForm";
+import { Navigate, useParams } from "react-router-dom";
 import { useQuery } from "@apollo/client";
 import { QUERY_SINGLE_USER, QUERY_ME } from "../../utils/queries";
+
+// import components
+import BudgetForm from "../../components/BudgetForm/BudgetForm";
 import ViewAllBudgets from "../../components/ViewAllBudgets/ViewAllBudgets";
+
+// import authorization helper
 import Auth from "../../utils/auth";
 
 // CSS Imports
 import "./singleprofile.css";
+import "chartkick/chart.js";
 
 // shows all the budgets of a single user
 // finds the user via their _id and useParams()
@@ -24,7 +27,7 @@ const SingleProfile = () => {
     variables: { userId: userId },
   });
   const user = data?.me || data?.user || [];
-  console.log(user)
+  console.log(user);
   const budgets = user.budgets;
 
   // if user is logged in and the id from the context and the token matches, redirects with `Navigate` to user's profile page with their data ( without url path and useParams() )

@@ -1,3 +1,4 @@
+// React imports
 import { Outlet } from "react-router-dom";
 import {
   ApolloClient,
@@ -6,10 +7,13 @@ import {
   createHttpLink,
 } from "@apollo/client";
 import { setContext } from "@apollo/client/link/context";
-import "bootstrap/dist/css/bootstrap.min.css";
 
+// import components
 import Header from "./components/Header/Header.jsx";
 import Footer from "./components/Footer/Footer.jsx";
+
+// import css
+import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
 
 const httpLink = createHttpLink({

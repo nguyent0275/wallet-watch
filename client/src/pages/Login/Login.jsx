@@ -13,6 +13,7 @@ function Login() {
   const [formState, setFormState] = useState({ email: "", password: "" });
   const [login, { error }] = useMutation(LOGIN);
 
+  // submite function that takes user input
   const handleFormSubmit = async (event) => {
     event.preventDefault();
     try {
@@ -26,6 +27,7 @@ function Login() {
     }
   };
 
+  // tracks the state of the login inputs
   const handleChange = (event) => {
     const { name, value } = event.target;
     setFormState({

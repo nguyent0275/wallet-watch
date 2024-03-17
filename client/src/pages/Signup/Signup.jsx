@@ -13,6 +13,7 @@ function Signup() {
   const [formState, setFormState] = useState({ email: "", password: "" });
   const [addUser] = useMutation(ADD_USER);
 
+  // submite function that takes user input
   const handleFormSubmit = async (event) => {
     event.preventDefault();
     const mutationResponse = await addUser({
@@ -27,6 +28,7 @@ function Signup() {
     Auth.login(token);
   };
 
+  // tracks the state of the login inputs
   const handleChange = (event) => {
     const { name, value } = event.target;
     setFormState({

@@ -1,26 +1,29 @@
-// import { Link } from "react-router-dom";
-import Card from "../../components/Card/Card";
-import { Popup } from "reactjs-popup";
-import BudgetForm from "../../components/BudgetForm/BudgetForm";
-import "chartkick/chart.js";
-import "./home.css";
-import Auth from "../../utils/auth";
-import "reactjs-popup/dist/index.css";
+// react & apollo imports
 import { useQuery } from "@apollo/client";
 import { useState } from "react";
 import { QUERY_ME } from "../../utils/queries";
+import { Popup } from "reactjs-popup";
+// importing authorization helper
+import Auth from "../../utils/auth";
+// importing components
+import Card from "../../components/Card/Card";
+import BudgetForm from "../../components/BudgetForm/BudgetForm";
 import CurrentBudget from "../../components/CurrentBudget/CurrentBudget";
-// import AllBudgetSpending from "../../components/AllBudgetSpending";
+// css imports
+import "reactjs-popup/dist/index.css";
+import "./home.css";
+import "chartkick/chart.js";
 
 const Home = () => {
+  // queries the logged in user
   const { loading, data } = useQuery(QUERY_ME);
   const user = data?.me || [];
-  console.log(user);
   const budgets = user.budgets;
-  console.log(budgets);
 
+  // state variable that determines which graph to show
   const [showCurrent, setShowCurrent] = useState(true);
 
+  // toggle function
   const handleSwitch = () => {
     setShowCurrent(!showCurrent);
   };
@@ -30,7 +33,9 @@ const Home = () => {
   if (loading) {
     return <div>Loading... </div>;
   }
-
+  
+  // if there is no user returned from the query
+  // default landing page
   if (user.length === 0)
     return (
       <>
@@ -97,14 +102,6 @@ const Home = () => {
       );
     }
   }
-
-  // return (
-  //   <>
-  //     <div>All Budget Spending</div>
-  //     <button onClick={handleSwitch}>Show Current Budget</button>
-  //     <AllBudgetSpending />
-  //   </>
-  // );
 };
 
 export default Home;
