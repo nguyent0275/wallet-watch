@@ -36,16 +36,16 @@ function Signup() {
   };
 
   return (
-    <div class="signup">
+    <div className="signup">
       <div id="link">
         <Link to="/login">← Go to Login</Link>
       </div>
 
       <h2>Signup</h2>
       <form onSubmit={handleFormSubmit}>
-        <div class="row">
-          <div class="column">
-            <label class="label" htmlFor="firstName">
+        <div className="row">
+          <div className="column">
+            <label className="label" htmlFor="firstName">
               First Name:
             </label>
             <input
@@ -56,8 +56,8 @@ function Signup() {
               onChange={handleChange}
             />
           </div>
-          <div class="column">
-            <label class="label" htmlFor="email">
+          <div className="column">
+            <label className="label" htmlFor="email">
               Email Address:
             </label>
             <input
@@ -70,9 +70,9 @@ function Signup() {
           </div>
         </div>
 
-        <div class="row">
-          <div class="column">
-            <label class="label" htmlFor="lastName">
+        <div className="row">
+          <div className="column">
+            <label className="label" htmlFor="lastName">
               Last Name:
             </label>
             <input
@@ -83,8 +83,8 @@ function Signup() {
               onChange={handleChange}
             />
           </div>
-          <div class="column">
-            <label class="label" htmlFor="pwd">
+          <div className="column">
+            <label className="label" htmlFor="pwd">
               Password:
             </label>
             <input
@@ -97,7 +97,7 @@ function Signup() {
           </div>
         </div>
 
-        <div class="row" id="submit">
+        <div className="row" id="submit">
           <button id="submit-button" type="submit">
             Signup
           </button>

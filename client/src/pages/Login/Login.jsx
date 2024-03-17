@@ -35,16 +35,16 @@ function Login() {
   };
 
   return (
-    <div class="login">
+    <div className="login">
       <div id="link">
         <Link to="/signup">← Go to Signup</Link>
       </div>
 
       <h2>Login</h2>
       <form onSubmit={handleFormSubmit}>
-        <div class="row">
-          <div class="column">
-            <label class="label" htmlFor="email">
+        <div className="row">
+          <div className="column">
+            <label className="label" htmlFor="email">
               Email Address:
             </label>
             <input
@@ -57,9 +57,9 @@ function Login() {
           </div>
         </div>
 
-        <div class="row">
-          <div class="column">
-            <label class="label" htmlFor="pwd">
+        <div className="row">
+          <div className="column">
+            <label className="label" htmlFor="pwd">
               Password:
             </label>
             <input
@@ -73,12 +73,12 @@ function Login() {
         </div>
 
         {error ? (
-          <div class="row" id="error">
+          <div className="row" id="error">
             <p className="error-text">The provided credentials are incorrect</p>
           </div>
         ) : null}
 
-        <div class="row" id="submit">
+        <div className="row" id="submit">
           <button id="submit-button" type="submit">
             Login
           </button>
