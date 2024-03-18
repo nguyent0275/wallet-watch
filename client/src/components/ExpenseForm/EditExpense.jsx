@@ -24,12 +24,9 @@ const EditExpenseForm = ({ budget, expense }) => {
   const handleFormSubmit = async () => {
     try {
       // event.preventDefault();
-      console.log(budgetId);
-      console.log(expense);
-      const expenseData = await updateExpense({
+      await updateExpense({
         variables: { budgetId, expenseId, name, cost, categoryId },
       });
-      console.log(expenseData);
       setCost();
       setName("");
       setCategoryId("");

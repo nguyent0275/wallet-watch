@@ -9,7 +9,6 @@ const YearOptions = () => {
   for (var i = earliestYear; i <= currentYear; i++) {
     years.unshift(i);
   }
-  // console.log(years);
   return (
     <>
       {years &&

@@ -19,7 +19,6 @@ const BudgetForm = ({ user }) => {
       userBudgetsArray[i].budgetMonth + " " + userBudgetsArray[i].budgetYear;
     budgetMonthAndYearsArray.push(budgetMonthAndYear);
   }
-  console.log(budgetMonthAndYearsArray);
 
   // addBudget is given the ADD_BUDGET mutation functionality
   // erorr is for backend errors

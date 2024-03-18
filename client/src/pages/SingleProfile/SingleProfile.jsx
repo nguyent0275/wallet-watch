@@ -27,7 +27,6 @@ const SingleProfile = () => {
     variables: { userId: userId },
   });
   const user = data?.me || data?.user || [];
-  console.log(user);
   const budgets = user.budgets;
 
   // if user is logged in and the id from the context and the token matches, redirects with `Navigate` to user's profile page with their data ( without url path and useParams() )

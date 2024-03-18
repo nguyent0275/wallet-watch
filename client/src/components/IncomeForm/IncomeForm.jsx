@@ -12,7 +12,6 @@ const IncomeForm = ({ budgetId }) => {
   // giving the mutation functionality to the variable addExpense
   const [addIncome, { error }] = useMutation(ADD_INCOME);
 
-  console.log(typeof amount);
   // add errorhandling, inputting 0 will not add the expense but it will also not error out
   const handleFormSubmit = async () => {
     // event.preventDefault()

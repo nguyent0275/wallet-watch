@@ -10,17 +10,13 @@ const DeleteBudget = (budget) => {
 
   const budgetId = budget.budget._id
 
-  const handleDelete = async (event) => {
-    console.log("test");
-    event.preventDefault();
+  const handleDelete = async () => {
+    // event.preventDefault();
 
     try {
-      console.log("test");
-      console.log(budget);
-      const data = await removeIncome({
+      await removeIncome({
         variables: { budgetId },
       });
-      console.log(data);
       window.location.href = "/user"
     } catch (err) {
       console.error(err);
