@@ -143,7 +143,7 @@ const CurrentBudgetChartData = (budget) => {
   if (isToggled) {
     return (
       <>
-        <div className="text-white">
+        <div id="current-data-container" className="text-white">
           <h4>Total Monthly Income</h4>
           <h5>${totalIncome}</h5>
           <h4>Total Monthly Spending</h4>
@@ -151,9 +151,9 @@ const CurrentBudgetChartData = (budget) => {
           <h4>Remaining Monthly Budget</h4>
           <h5>${totalIncome - totalExpense}</h5>
           <button onClick={handleToggle}>Show Daily Spending</button>
-          <h6>Spending by Category</h6>
         </div>
-        <div className="background-white">
+        <h4 className="chart-container-header">Spending by Category</h4>
+        <div id="chart-container" className="background-white">
           <PieChart data={chartData} />
         </div>
         <CategoryDataTable categoryArray={categoryArray} />
@@ -164,7 +164,7 @@ const CurrentBudgetChartData = (budget) => {
   // false === LineChart / Daily Spending
   return (
     <>
-      <div className="text-white">
+      <div id="current-data-container" className="text-white">
         <h4>Total Monthly Income</h4>
         <h5>${totalIncome}</h5>
         <h4>Total Monthly Spending</h4>
@@ -172,9 +172,9 @@ const CurrentBudgetChartData = (budget) => {
         <h4>Remaining Monthly Budget</h4>
         <h5>${totalIncome - totalExpense}</h5>
         <button onClick={handleToggle}>Show Daily Spending</button>
-        <h6>Spending by Day</h6>
       </div>
-      <div className="background-white">
+      <h4 className="chart-container-header">Spending by Day</h4>
+      <div id="chart-container" className="background-white">
         <LineChart data={lineChartData} />
       </div>
       <CategoryDataTable categoryArray={categoryArray} />
