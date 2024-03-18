@@ -7,7 +7,7 @@ import {
   Heading,
 } from "./FooterStyles";
 
-import { FaGithub } from "react-icons/fa";
+import { FaGithub, FaTwitter } from "react-icons/fa";
 import { BsLinkedin } from "react-icons/bs";
 import { FaStackOverflow } from "react-icons/fa";
 
@@ -77,10 +77,13 @@ const Footer = () => {
           </Column>
           <Column>
             <Heading>Jonathan Torres Bones</Heading>
-            <h4 style={{ color: "white" }}>Developer</h4>
+            <h4 style={{ color: "white" }}>FrontEnd/BackEnd Developer</h4>
             <div className="icon-container">
               <FooterLink href="https://github.com/TorresBones">
                 <FaGithub size={40} />
+              </FooterLink>
+              <FooterLink href="https://twitter.com/JohnnyTW10">
+                <FaTwitter size={40} />
               </FooterLink>
             </div>
           </Column>
