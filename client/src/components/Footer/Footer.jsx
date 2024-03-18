@@ -44,7 +44,7 @@ const Footer = () => {
           </Column>
           <Column>
             <Heading>Nick Settembrino</Heading>
-            <h4 style={{ color: "white" }}>Developer</h4>
+            <h4 style={{ color: "white" }}>UI/UX Designer</h4>
             <div className="icon-container">
               <FooterLink href="https://github.com/nsettyy">
                 <FaGithub size={40} />
@@ -56,7 +56,7 @@ const Footer = () => {
           </Column>
           <Column>
             <Heading>Bradley Reeser</Heading>
-            <h4 style={{ color: "white" }}>Developer</h4>
+            <h4 style={{ color: "white" }}>UI/UX Designer</h4>
             <div className="icon-container">
               <FooterLink href="https://github.com/BorzoiBurrow">
                 <FaGithub size={40} />
@@ -77,7 +77,7 @@ const Footer = () => {
           </Column>
           <Column>
             <Heading>Jonathan Torres Bones</Heading>
-            <h4 style={{ color: "white" }}>FrontEnd/BackEnd Developer</h4>
+            <h4 style={{ color: "white" }}>Frontend Developer</h4>
             <div className="icon-container">
               <FooterLink href="https://github.com/TorresBones">
                 <FaGithub size={40} />
