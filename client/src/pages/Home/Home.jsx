@@ -1,6 +1,6 @@
 // react & apollo imports
 import { useQuery } from "@apollo/client";
-import { useState } from "react";
+// import { useState } from "react";
 import { QUERY_ME } from "../../utils/queries";
 import { Popup } from "reactjs-popup";
 // importing authorization helper
@@ -20,20 +20,12 @@ const Home = () => {
   const user = data?.me || [];
   const budgets = user.budgets;
 
-  // state variable that determines which graph to show
-  const [showCurrent, setShowCurrent] = useState(true);
-
-  // toggle function
-  const handleSwitch = () => {
-    setShowCurrent(!showCurrent);
-  };
-
   // conditional rendering
   // if data is still being retrieved
   if (loading) {
     return <div>Loading... </div>;
   }
-  
+
   // if there is no user returned from the query
   // default landing page
   if (user.length === 0)
@@ -47,7 +39,6 @@ const Home = () => {
 
   // if user is logged in and has no budget
   if ((Auth.loggedIn() && budgets.length === 0) || undefined) {
-    if (showCurrent) {
       return (
         <>
           <main>
@@ -66,16 +57,13 @@ const Home = () => {
                   </div>
                 )}
               </Popup>
-              <button onClick={handleSwitch}>Show Budget Spending</button>
             </div>
           </main>
         </>
       );
-    }
   }
   // if user is loggedin and has a current month budget
   if (Auth.loggedIn && budgets.length > 0) {
-    if (showCurrent) {
       return (
         <>
           <main>
@@ -94,13 +82,11 @@ const Home = () => {
                   </div>
                 )}
               </Popup>
-              <button onClick={handleSwitch}>Show Budget Spending</button>
             </div>
             <CurrentBudget user={user} />
           </main>
         </>
       );
-    }
   }
 };
 
