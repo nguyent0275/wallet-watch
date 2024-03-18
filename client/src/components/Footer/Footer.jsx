@@ -68,7 +68,7 @@ const Footer = () => {
           </Column>
           <Column>
             <Heading>Savannah Klinger</Heading>
-            <h4 style={{ color: "white" }}>Developer</h4>
+            <h4 style={{ color: "white" }}>Frontend Developer</h4>
             <div className="icon-container">
               <FooterLink href="https://github.com/savannahjk02">
                 <FaGithub size={40} />
