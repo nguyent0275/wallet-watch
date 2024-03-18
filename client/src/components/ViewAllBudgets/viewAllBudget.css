@@ -1,0 +1,38 @@
+h3 {
+    color: white;
+    text-decoration: underline;
+    margin-left: 10px;  
+}
+
+li {
+    margin-left: 10px;
+    list-style-type:none;
+    text-decoration: none;
+  }
+  
+  .custom-bullet li {
+    position: relative;
+    padding-left: 20px;
+  }
+  
+  .custom-bullet li::before {
+    content: '\1F4B0';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 1.2em;
+    font-weight: bold;
+    margin-right: 15px;
+    display: inline-block;
+  }
+
+  .custom-link {
+    text-decoration: none;
+    color: white;
+  }
+
+  .custom-link:hover {
+    text-decoration: wavy;
+    color: rgba(206, 147, 0, 0.973);
+  }
