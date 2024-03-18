@@ -14,8 +14,8 @@ function Signup() {
   const [addUser] = useMutation(ADD_USER);
 
   // submite function that takes user input
-  const handleFormSubmit = async (event) => {
-    event.preventDefault();
+  const handleFormSubmit = async () => {
+    // event.preventDefault();
     const mutationResponse = await addUser({
       variables: {
         email: formState.email,
