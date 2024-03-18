@@ -28,7 +28,6 @@ const ExpenseForm = ({ budgetId }) => {
       await addExpense({
         variables: { budgetId, name, cost, categoryId },
       });
-      // console.log(expenseData);
       setCost(0.01);
       setName("");
       setCategoryId("");

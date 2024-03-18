@@ -22,7 +22,6 @@ const ViewBudget = () => {
     variables: { budgetId: budgetId },
   });
   const budget = data?.budget || [];
-  console.log(budget);
 
   if (loading) {
     return <div>Loading... </div>;

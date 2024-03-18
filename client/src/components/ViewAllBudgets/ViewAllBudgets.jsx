@@ -4,7 +4,6 @@ import "./viewAllBudget.css"
 
 // loads this component on the SingleProfile page
 const ViewAllBudgets = ({ budgets }) => {
-  console.log(budgets);
   return (
     <>
       <h3>All Budgets</h3>
