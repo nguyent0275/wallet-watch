@@ -62,7 +62,7 @@ const CurrentBudgetChartData = (budget) => {
   const incomeArray = budget.budget.incomes;
   var totalIncome = 0;
   for (let i = 0; i < incomeArray.length; i++) {
-    totalIncome = totalIncome + incomeArray[i].amount;
+    totalIncome = (totalIncome + incomeArray[i].amount).toFixed(2);
   }
 
   // creating an array of all the dates of the expneses
@@ -145,11 +145,11 @@ const CurrentBudgetChartData = (budget) => {
       <>
         <div id="current-data-container" className="text-white">
           <h4>Total Monthly Income</h4>
-          <h5>${totalIncome}</h5>
+          <h5>${Math.round(totalIncome * 100) / 100}</h5>
           <h4>Total Monthly Spending</h4>
-          <h5>${totalExpense}</h5>
+          <h5>${Math.round(totalExpense * 100) / 100}</h5>
           <h4>Remaining Monthly Budget</h4>
-          <h5>${totalIncome - totalExpense}</h5>
+          <h5>${Math.round((totalIncome - totalExpense) * 100) / 100}</h5>
           <button onClick={handleToggle}>Show Daily Spending</button>
         </div>
         <h4 className="chart-container-header">Spending by Category</h4>
@@ -166,11 +166,11 @@ const CurrentBudgetChartData = (budget) => {
     <>
       <div id="current-data-container" className="text-white">
         <h4>Total Monthly Income</h4>
-        <h5>${totalIncome}</h5>
+        <h5>${Math.round(totalIncome * 100) / 100}</h5>
         <h4>Total Monthly Spending</h4>
-        <h5>${totalExpense}</h5>
+        <h5>${Math.round(totalExpense * 100) / 100}</h5>
         <h4>Remaining Monthly Budget</h4>
-        <h5>${totalIncome - totalExpense}</h5>
+        <h5>${Math.round((totalIncome - totalExpense) * 100) / 100}</h5>
         <button onClick={handleToggle}>Show Daily Spending</button>
       </div>
       <h4 className="chart-container-header">Spending by Day</h4>
