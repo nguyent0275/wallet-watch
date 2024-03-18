@@ -1,0 +1,27 @@
+.category-table {
+  width: 45%;
+  margin-right: 2%;
+  margin-left: 2%;
+}
+
+#tables-container {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.table-date {
+  width: 25%;
+}
+
+.table-cost {
+  width: 20%;
+}
+
+td {
+  white-space: normal;
+}
+
+#tables-container-header {
+  color: white;
+  text-align: center;
+}
