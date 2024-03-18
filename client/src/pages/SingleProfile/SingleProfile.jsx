@@ -1,16 +1,19 @@
 //React Imports
-import { Navigate, useParams } from "react-router-dom";
-// import { PieChart } from "react-chartkick";
-import "chartkick/chart.js";
 import { Popup } from "reactjs-popup";
-import BudgetForm from "../../components/BudgetForm/BudgetForm";
+import { Navigate, useParams } from "react-router-dom";
 import { useQuery } from "@apollo/client";
 import { QUERY_SINGLE_USER, QUERY_ME } from "../../utils/queries";
+
+// import components
+import BudgetForm from "../../components/BudgetForm/BudgetForm";
 import ViewAllBudgets from "../../components/ViewAllBudgets/ViewAllBudgets";
+
+// import authorization helper
 import Auth from "../../utils/auth";
 
 // CSS Imports
 import "./singleprofile.css";
+import "chartkick/chart.js";
 
 // shows all the budgets of a single user
 // finds the user via their _id and useParams()
@@ -56,7 +59,7 @@ const SingleProfile = () => {
             {(close) => (
               <div className="modal-container">
                 <div className="modal-content">
-                  <BudgetForm userId={user._id} />
+                  <BudgetForm user={user} />
                   <button onClick={() => close()}>Close Modal</button>
                 </div>
               </div>

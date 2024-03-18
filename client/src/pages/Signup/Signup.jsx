@@ -6,15 +6,16 @@ import Auth from "../../utils/auth";
 import { ADD_USER } from "../../utils/mutations";
 
 //CSS Imports
-import "./signup.css";
+import "./Signup.css";
 
 //Signup Function
 function Signup() {
   const [formState, setFormState] = useState({ email: "", password: "" });
   const [addUser] = useMutation(ADD_USER);
 
-  const handleFormSubmit = async (event) => {
-    event.preventDefault();
+  // submite function that takes user input
+  const handleFormSubmit = async () => {
+    // event.preventDefault();
     const mutationResponse = await addUser({
       variables: {
         email: formState.email,
@@ -27,6 +28,7 @@ function Signup() {
     Auth.login(token);
   };
 
+  // tracks the state of the login inputs
   const handleChange = (event) => {
     const { name, value } = event.target;
     setFormState({

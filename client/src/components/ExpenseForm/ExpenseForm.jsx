@@ -15,6 +15,7 @@ const ExpenseForm = ({ budgetId }) => {
   const [name, setName] = useState("");
   const [cost, setCost] = useState(0.01);
   const [categoryId, setCategoryId] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
 
   // giving the mutation functionality to the variable addExpense
   const [addExpense, { error }] = useMutation(ADD_EXPENSE);
@@ -22,13 +23,11 @@ const ExpenseForm = ({ budgetId }) => {
   // add errorhandling, inputting 0 will not add the expense but it will also not error out
   const handleFormSubmit = async () => {
     // event.preventDefault();
-
     try {
       // running mutations with the provided variables as arguments
-      const expenseData = await addExpense({
+      await addExpense({
         variables: { budgetId, name, cost, categoryId },
       });
-      console.log(expenseData);
       setCost(0.01);
       setName("");
       setCategoryId("");
@@ -37,6 +36,31 @@ const ExpenseForm = ({ budgetId }) => {
     }
   };
 
+  // on mouseLeave of the field, will check for input and serve an error message
+  const handleEmptyName = (e) => {
+    const { target } = e;
+    const inputValue = target.value;
+
+    if (!inputValue) {
+      setErrorMessage("Please enter a name");
+    } else {
+      setErrorMessage("");
+    }
+  };
+
+  // on mouseLeave of the field, will check for input and serve an error message
+  const handleEmptyCost = (e) => {
+    const { target } = e;
+    const inputValue = target.value;
+
+    if (!inputValue || inputValue === 0) {
+      setErrorMessage("Please enter a valid number");
+    } else {
+      setErrorMessage("");
+    }
+  };
+
+  // conditional rendering, waiting for data from query
   if (loading) {
     return <div>Loading... </div>;
   }
@@ -50,6 +74,7 @@ const ExpenseForm = ({ budgetId }) => {
           placeholder="Enter name of the expense..."
           value={name}
           onChange={(event) => setName(event.target.value)}
+          onMouseLeave={handleEmptyName}
         ></input>
         <label>What is the cost of the expense?</label>
         <input
@@ -58,6 +83,7 @@ const ExpenseForm = ({ budgetId }) => {
           placeholder="Enter the expense cost..."
           value={cost}
           onChange={(event) => setCost(parseFloat(event.target.value))}
+          onMouseLeave={handleEmptyCost}
         ></input>
         <label>What category does it belong to?</label>
         <select
@@ -68,7 +94,8 @@ const ExpenseForm = ({ budgetId }) => {
           <CategoryOptions categories={categories} />
         </select>
         <button type="submit">Submit</button>
-        {error && <div>Something went wrong... </div>}
+        {errorMessage && <div id="errorMessage">{errorMessage}</div>}
+        {error && <div id="error">Please enter a category</div>}
       </form>
     </>
   );

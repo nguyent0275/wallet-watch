@@ -4,14 +4,16 @@ import { useParams } from "react-router-dom";
 import { useQuery } from "@apollo/client";
 import { QUERY_SINGLE_BUDGET } from "../../utils/queries";
 import { Popup } from "reactjs-popup";
+
+// component imports
 import ExpenseForm from "../../components/ExpenseForm/ExpenseForm";
 import IncomeForm from "../../components/IncomeForm/IncomeForm";
 import DeleteBudget from "../../components/BudgetForm/DeleteBudget";
 import EditExpenseForm from "../../components/ExpenseForm/EditExpense";
-import EditIncomeForm from "../../components/IncomeForm/EditIncome"
+import EditIncomeForm from "../../components/IncomeForm/EditIncome";
 
-
-import "../SingleProfile/Singleprofile.css";
+// css imports
+import "../SingleProfile/singleprofile.css";
 
 // view a single budget based on the budget's _id and useParams()
 const ViewBudget = () => {
@@ -20,7 +22,6 @@ const ViewBudget = () => {
     variables: { budgetId: budgetId },
   });
   const budget = data?.budget || [];
-  console.log(budget);
 
   if (loading) {
     return <div>Loading... </div>;
@@ -60,7 +61,9 @@ const ViewBudget = () => {
           </div>
         )}
       </Popup>
-      <h2>{budget.budgetMonth} {budget.budgetYear}</h2>
+      <h2>
+        {budget.budgetMonth} {budget.budgetYear}
+      </h2>
       <MDBTable>
         <caption>Expenses</caption>
         <MDBTableHead>
@@ -80,7 +83,7 @@ const ViewBudget = () => {
               <td>{expense.cost}</td>
               <td>{expense.category.name}</td>
               <td>
-              <Popup
+                <Popup
                   trigger={<button> Edit </button>}
                   position="right center"
                   modal
@@ -116,7 +119,7 @@ const ViewBudget = () => {
               <td>{income.name}</td>
               <td>{income.amount}</td>
               <td>
-              <Popup
+                <Popup
                   trigger={<button> Edit </button>}
                   position="right center"
                   modal

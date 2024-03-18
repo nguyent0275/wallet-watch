@@ -8,33 +8,54 @@ import DeleteExpense from "./DeleteExpense";
 
 // passes income and budget from the viewBudget.jsx
 const EditExpenseForm = ({ budget, expense }) => {
-
   const { loading, data } = useQuery(QUERY_ALL_CATEGORIES);
   const categories = data?.categories || [];
 
-  const expenseId = expense._id
-  const budgetId = budget._id
+  const expenseId = expense._id;
+  const budgetId = budget._id;
 
   const [name, setName] = useState(expense.name);
   const [cost, setCost] = useState(expense.cost);
   const [categoryId, setCategoryId] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
 
   const [updateExpense, { error }] = useMutation(UPDATE_EXPENSE);
 
   const handleFormSubmit = async () => {
     try {
-      // event.preventDefault()
-      console.log(budgetId)
-      console.log(expense)
-      const expenseData = await updateExpense({
+      // event.preventDefault();
+      await updateExpense({
         variables: { budgetId, expenseId, name, cost, categoryId },
       });
-      console.log(expenseData);
       setCost();
       setName("");
       setCategoryId("");
     } catch (err) {
       console.error(err);
+    }
+  };
+
+  // on mouseLeave of the field, will check for input and serve an error message
+  const handleEmptyName = (e) => {
+    const { target } = e;
+    const inputValue = target.value;
+
+    if (!inputValue) {
+      setErrorMessage("Please enter a name");
+    } else {
+      setErrorMessage("");
+    }
+  };
+
+  // on mouseLeave of the field, will check for input and serve an error message
+  const handleEmptyCost = (e) => {
+    const { target } = e;
+    const inputValue = target.value;
+
+    if (!inputValue || inputValue === 0) {
+      setErrorMessage("Please enter a valid number");
+    } else {
+      setErrorMessage("");
     }
   };
 
@@ -51,6 +72,7 @@ const EditExpenseForm = ({ budget, expense }) => {
           placeholder="Enter name of the expense..."
           value={name}
           onChange={(event) => setName(event.target.value)}
+          onMouseLeave={handleEmptyName}
         ></input>
         <label>What is the cost of the expense?</label>
         <input
@@ -59,6 +81,7 @@ const EditExpenseForm = ({ budget, expense }) => {
           placeholder="Enter the expense cost..."
           value={cost}
           onChange={(event) => setCost(parseFloat(event.target.value))}
+          onMouseLeave={handleEmptyCost}
         ></input>
         <label>What category does it belong to?</label>
         <select
@@ -69,12 +92,12 @@ const EditExpenseForm = ({ budget, expense }) => {
           <CategoryOptions categories={categories} />
         </select>
         <button type="submit">Submit</button>
-        {error && <div>Something went wrong... </div>}
+        {errorMessage && <div id="errorMessage">{errorMessage}</div>}
+        {error && <div id="error">Something went horribly wrong. Please contact support</div>}
       </form>
       <DeleteExpense budget={budget} expense={expense} />
     </>
   );
 };
-
 
 export default EditExpenseForm;
