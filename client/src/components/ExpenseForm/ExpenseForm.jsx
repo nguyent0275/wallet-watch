@@ -21,8 +21,8 @@ const ExpenseForm = ({ budgetId }) => {
   const [addExpense, { error }] = useMutation(ADD_EXPENSE);
 
   // add errorhandling, inputting 0 will not add the expense but it will also not error out
-  const handleFormSubmit = async (event) => {
-    event.preventDefault();
+  const handleFormSubmit = async () => {
+    // event.preventDefault();
     try {
       // running mutations with the provided variables as arguments
       await addExpense({
