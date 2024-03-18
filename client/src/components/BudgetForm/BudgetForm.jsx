@@ -27,10 +27,9 @@ const BudgetForm = ({ user }) => {
   // useState variable for serving front end error
   const [errorMessage, setErrorMessage] = useState("");
 
-  const handleFormSubmit = async () => {
+  const handleFormSubmit = async (event) => {
     // add event as an arg for handleFormSubmit as well
-    // will stop the page from refreshing (working as intended, so page will refresh with the addition of new budget)
-    // event.preventDefault();
+    event.preventDefault();
 
     // running the mutation with the provided variables as args
     try {
@@ -52,7 +51,7 @@ const BudgetForm = ({ user }) => {
         variables: { userId, budgetMonth, budgetYear },
       });
       // if user is adding a budget from the homepage, it will redirect them to their profile page and show that new budget
-      window.location.replace("/user/");
+      window.location.replace("/user");
     } catch (err) {
       console.error(err);
     }
