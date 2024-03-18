@@ -1,8 +1,11 @@
 import { useQuery } from "@apollo/client";
 import { QUERY_ALL_CATEGORIES } from "../../utils/queries";
-import { LineChart, PieChart } from 'react-chartkick'
+import { LineChart, PieChart } from "react-chartkick";
 import { useState } from "react";
 import CategoryDataTable from "./CategoryTableData";
+
+// css import
+import "./currentbudget.css";
 
 // getting budget from CurrentBudget.jsx
 const CurrentBudgetChartData = (budget) => {
@@ -114,7 +117,7 @@ const CurrentBudgetChartData = (budget) => {
     costArray.push(dateArrayOfObjects[i].total);
   }
 
-  // adds the formated data to the object 
+  // adds the formated data to the object
   let lineChartData = {};
   for (let i = 0; i < dateArrayOfObjects.length; i++) {
     let key = dateArray[i];
@@ -140,15 +143,19 @@ const CurrentBudgetChartData = (budget) => {
   if (isToggled) {
     return (
       <>
-        <h4>Total Monthly Income</h4>
-        <h5>${totalIncome}</h5>
-        <h4>Total Monthly Spending</h4>
-        <h5>${totalExpense}</h5>
-        <h4>Remaining Monthly Budget</h4>
-        <h5>${totalIncome - totalExpense}</h5>
-        <button onClick={handleToggle}>Show Daily Spending</button>
-        <h6>Spending by Category</h6>
-        <PieChart data={chartData} />
+        <div id="current-data-container" className="text-white">
+          <h4>Total Monthly Income</h4>
+          <h5>${totalIncome}</h5>
+          <h4>Total Monthly Spending</h4>
+          <h5>${totalExpense}</h5>
+          <h4>Remaining Monthly Budget</h4>
+          <h5>${totalIncome - totalExpense}</h5>
+          <button onClick={handleToggle}>Show Daily Spending</button>
+        </div>
+        <h4 className="chart-container-header">Spending by Category</h4>
+        <div id="chart-container" className="background-white">
+          <PieChart data={chartData} />
+        </div>
         <CategoryDataTable categoryArray={categoryArray} />
       </>
     );
@@ -157,15 +164,19 @@ const CurrentBudgetChartData = (budget) => {
   // false === LineChart / Daily Spending
   return (
     <>
-      <h4>Total Monthly Income</h4>
-      <h5>${totalIncome}</h5>
-      <h4>Total Monthly Spending</h4>
-      <h5>${totalExpense}</h5>
-      <h4>Remaining Monthly Budget</h4>
-      <h5>${totalIncome - totalExpense}</h5>
-      <button onClick={handleToggle}>Show Spending by Category</button>
-      <h6>Spending by Day</h6>
-      <LineChart data={lineChartData} />
+      <div id="current-data-container" className="text-white">
+        <h4>Total Monthly Income</h4>
+        <h5>${totalIncome}</h5>
+        <h4>Total Monthly Spending</h4>
+        <h5>${totalExpense}</h5>
+        <h4>Remaining Monthly Budget</h4>
+        <h5>${totalIncome - totalExpense}</h5>
+        <button onClick={handleToggle}>Show Daily Spending</button>
+      </div>
+      <h4 className="chart-container-header">Spending by Day</h4>
+      <div id="chart-container" className="background-white">
+        <LineChart data={lineChartData} />
+      </div>
       <CategoryDataTable categoryArray={categoryArray} />
     </>
   );
