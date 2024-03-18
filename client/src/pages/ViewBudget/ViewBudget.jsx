@@ -13,7 +13,7 @@ import EditExpenseForm from "../../components/ExpenseForm/EditExpense";
 import EditIncomeForm from "../../components/IncomeForm/EditIncome";
 
 // css imports
-import "../SingleProfile/Singleprofile.css";
+import "../SingleProfile/singleprofile.css";
 
 // view a single budget based on the budget's _id and useParams()
 const ViewBudget = () => {
