@@ -14,8 +14,8 @@ function Login() {
   const [login, { error }] = useMutation(LOGIN);
 
   // submite function that takes user input
-  const handleFormSubmit = async () => {
-    // event.preventDefault();
+  const handleFormSubmit = async (event) => {
+    event.preventDefault();
     try {
       const mutationResponse = await login({
         variables: { email: formState.email, password: formState.password },
