@@ -6,6 +6,7 @@ import Auth from "../../utils/auth";
 import { ADD_USER } from "../../utils/mutations";
 
 //CSS Imports
+// lowercased
 import "./signup.css";
 
 //Signup Function
