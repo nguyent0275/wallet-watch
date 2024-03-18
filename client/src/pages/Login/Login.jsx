@@ -14,6 +14,7 @@ function Login() {
   const [login, { error }] = useMutation(LOGIN);
 
   // submite function that takes user input
+  // needs event.preventDefault()
   const handleFormSubmit = async (event) => {
     event.preventDefault();
     try {
