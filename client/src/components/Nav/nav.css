@@ -1,27 +1,10 @@
 nav ul {
     display: flex;
-    flex-direction: row;
     justify-content: space-around;
-    align-items: center;
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    font-weight: bold;
+    font-size: 30px;
+    color: rgba(206, 147, 0, 0.973);
+}
+
+nav {
     background-color: black;
-    color: white;
-  }
-  
-  .navbar-link {
-    color: white;
-    text-decoration: none;
-  }
-
-  header {
-    background-color: black;
-  }
-
-  header h2 {
-    color: white;
-  }
-
-  header img {
-    height: 200px;
-  }
+}

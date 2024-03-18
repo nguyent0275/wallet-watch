@@ -6,15 +6,16 @@ import { LOGIN } from "../../utils/mutations";
 import Auth from "../../utils/auth";
 
 //CSS Imports
-import "./login.css";
+import "./Login.css"
 
 //Login Function
 function Login() {
   const [formState, setFormState] = useState({ email: "", password: "" });
   const [login, { error }] = useMutation(LOGIN);
 
-  const handleFormSubmit = async (event) => {
-    event.preventDefault();
+  // submite function that takes user input
+  const handleFormSubmit = async () => {
+    // event.preventDefault();
     try {
       const mutationResponse = await login({
         variables: { email: formState.email, password: formState.password },
@@ -26,6 +27,7 @@ function Login() {
     }
   };
 
+  // tracks the state of the login inputs
   const handleChange = (event) => {
     const { name, value } = event.target;
     setFormState({
@@ -35,14 +37,16 @@ function Login() {
   };
 
   return (
-    <div class="login">
-      <Link to="/signup">← Go to Signup</Link>
+    <div className="login">
+      <div id="link">
+        <Link to="/signup">← Go to Signup</Link>
+      </div>
 
       <h2>Login</h2>
       <form onSubmit={handleFormSubmit}>
-        <div class="row">
-          <div class="column">
-            <label class="label" htmlFor="email">
+        <div className="row">
+          <div className="column">
+            <label className="label" htmlFor="email">
               Email Address:
             </label>
             <input
@@ -55,9 +59,9 @@ function Login() {
           </div>
         </div>
 
-        <div class="row">
-          <div class="column">
-            <label class="label" htmlFor="pwd">
+        <div className="row">
+          <div className="column">
+            <label className="label" htmlFor="pwd">
               Password:
             </label>
             <input
@@ -71,13 +75,15 @@ function Login() {
         </div>
 
         {error ? (
-          <div class='row' id='error'>
+          <div className="row" id="error">
             <p className="error-text">The provided credentials are incorrect</p>
           </div>
         ) : null}
 
-        <div class="row" id="submit">
-          <button id='submit-button' type="submit">Login</button>
+        <div className="row" id="submit">
+          <button id="submit-button" type="submit">
+            Login
+          </button>
         </div>
       </form>
     </div>

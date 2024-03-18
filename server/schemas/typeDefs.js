@@ -15,7 +15,9 @@ type Category {
 
 type Budget {
   _id: ID
+  userId: ID
   budgetMonth: String
+  budgetYear: Int
   expenses: [Expense]
   incomes: [Income]
 }
@@ -33,7 +35,6 @@ type Income {
   name: String
   date: String
   amount: Int
-  category: Category
 }
 
 type Auth {
@@ -44,12 +45,15 @@ type Auth {
 type Mutation {
   addUser(firstName: String!, lastName: String!, email: String!, password: String!): Auth
   login(email: String!, password: String!): Auth
-  addBudget(userId: ID! budgetMonth: String!): User
-  addExpense(budgetId: ID!, name: String!, cost: Int!): Budget
+  addBudget(userId: ID! budgetMonth: String! budgetYear: Int!): User
+  addExpense(budgetId: ID!, name: String!, cost: Int!, categoryId: ID!): Budget
   addIncome(budgetId: ID!, name: String!, amount: Int!): Budget
   removeBudget(budgetId: ID!): Budget
   removeExpense(budgetId: ID!, expenseId: ID!): Budget
   removeIncome(budgetId: ID!, incomeId: ID!): Budget
+  updateBudget(budgetId: ID!, budgetMonth: String budgetYear: Int): Budget
+  updateExpense(budgetId: ID!, expenseId: ID!, name: String, cost: Int, categoryId: ID): Budget
+  updateIncome(budgetId: ID!, incomeId: ID!,  name: String, amount: Int): Budget
 }
 
 type Query {
@@ -59,6 +63,7 @@ type Query {
   categories: [Category]
   budgets: [Budget]
   budget(budgetId: ID!): Budget
+  currentMonthBudget(userId: ID!, budgetMonth: String!, budgetYear: Int!): Budget
 }
 
 `;

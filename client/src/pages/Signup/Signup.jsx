@@ -6,15 +6,16 @@ import Auth from "../../utils/auth";
 import { ADD_USER } from "../../utils/mutations";
 
 //CSS Imports
-import "./signup.css";
+import "./Signup.css";
 
 //Signup Function
 function Signup() {
   const [formState, setFormState] = useState({ email: "", password: "" });
   const [addUser] = useMutation(ADD_USER);
 
-  const handleFormSubmit = async (event) => {
-    event.preventDefault();
+  // submite function that takes user input
+  const handleFormSubmit = async () => {
+    // event.preventDefault();
     const mutationResponse = await addUser({
       variables: {
         email: formState.email,
@@ -27,6 +28,7 @@ function Signup() {
     Auth.login(token);
   };
 
+  // tracks the state of the login inputs
   const handleChange = (event) => {
     const { name, value } = event.target;
     setFormState({
@@ -36,14 +38,16 @@ function Signup() {
   };
 
   return (
-    <div class="signup">
-      <Link to="/login">← Go to Login</Link>
+    <div className="signup">
+      <div id="link">
+        <Link to="/login">← Go to Login</Link>
+      </div>
 
       <h2>Signup</h2>
       <form onSubmit={handleFormSubmit}>
-        <div class="row">
-          <div class="column">
-            <label class="label" htmlFor="firstName">
+        <div className="row">
+          <div className="column">
+            <label className="label" htmlFor="firstName">
               First Name:
             </label>
             <input
@@ -54,8 +58,8 @@ function Signup() {
               onChange={handleChange}
             />
           </div>
-          <div class="column">
-            <label class="label" htmlFor="email">
+          <div className="column">
+            <label className="label" htmlFor="email">
               Email Address:
             </label>
             <input
@@ -68,9 +72,9 @@ function Signup() {
           </div>
         </div>
 
-        <div class="row">
-          <div class="column">
-            <label class="label" htmlFor="lastName">
+        <div className="row">
+          <div className="column">
+            <label className="label" htmlFor="lastName">
               Last Name:
             </label>
             <input
@@ -81,8 +85,8 @@ function Signup() {
               onChange={handleChange}
             />
           </div>
-          <div class="column">
-            <label class="label" htmlFor="pwd">
+          <div className="column">
+            <label className="label" htmlFor="pwd">
               Password:
             </label>
             <input
@@ -95,8 +99,10 @@ function Signup() {
           </div>
         </div>
 
-        <div class="row" id="submit">
-          <button id='submit-button' type="submit">Signup</button>
+        <div className="row" id="submit">
+          <button id="submit-button" type="submit">
+            Signup
+          </button>
         </div>
       </form>
     </div>

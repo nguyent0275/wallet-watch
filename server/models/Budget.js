@@ -18,6 +18,10 @@ const budgetSchema = new Schema({
     // unique: true,
     trim: true,
   },
+  budgetYear: {
+    type: Number,
+    required: true,
+  },
   // array of objects, containing expense data
   expenses: [
     {
@@ -57,10 +61,6 @@ const budgetSchema = new Schema({
         type: Number,
         required: true,
         min: 0.01,
-      },
-      category: {
-        type: Schema.Types.ObjectId,
-        ref: "Category",
       },
     },
   ],

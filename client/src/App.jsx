@@ -1,3 +1,4 @@
+// React imports
 import { Outlet } from "react-router-dom";
 import {
   ApolloClient,
@@ -6,10 +7,14 @@ import {
   createHttpLink,
 } from "@apollo/client";
 import { setContext } from "@apollo/client/link/context";
-import 'bootstrap/dist/css/bootstrap.min.css';
 
-import Nav from "./components/Nav/Nav.jsx";
-import Footer from "./components/Footer/Footer.jsx"
+// import components
+import Header from "./components/Header/Header.jsx";
+import Footer from "./components/Footer/Footer.jsx";
+
+// import css
+import "bootstrap/dist/css/bootstrap.min.css";
+import "./App.css";
 
 const httpLink = createHttpLink({
   uri: "/graphql",
@@ -29,7 +34,7 @@ const authLink = setContext((_, { headers }) => {
 });
 
 const client = new ApolloClient({
-    // Set up our client to execute the `authLink` middleware prior to making the request to our GraphQL API
+  // Set up our client to execute the `authLink` middleware prior to making the request to our GraphQL API
   link: authLink.concat(httpLink),
   cache: new InMemoryCache(),
 });
@@ -37,7 +42,8 @@ const client = new ApolloClient({
 function App() {
   return (
     <ApolloProvider client={client}>
-      <Nav />
+      <Header />
+      {/* <Nav /> */}
       <Outlet />
       <Footer />
     </ApolloProvider>
