@@ -6,7 +6,7 @@ import { LOGIN } from "../../utils/mutations";
 import Auth from "../../utils/auth";
 
 //CSS Imports
-import "./login.css"
+import "./Login.css"
 
 //Login Function
 function Login() {
