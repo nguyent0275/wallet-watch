@@ -1,9 +1,9 @@
 // imports
 import { useQuery, useMutation } from "@apollo/client";
 import { useState } from "react";
-import { QUERY_ALL_CATEGORIES } from "../utils/queries";
-import { UPDATE_EXPENSE } from "../utils/mutations";
-import CategoryOptions from "./CategoryOptions";
+import { QUERY_ALL_CATEGORIES } from "../../utils/queries";
+import { UPDATE_EXPENSE } from "../../utils/mutations";
+import CategoryOptions from "../Dropdowns/CategoryOptions";
 import DeleteExpense from "./DeleteExpense";
 
 // passes income and budget from the viewBudget.jsx

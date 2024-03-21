@@ -2,21 +2,17 @@
 import Card from "../../components/Card/Card";
 import { Popup } from "reactjs-popup";
 import BudgetForm from "../../components/BudgetForm/BudgetForm";
-// import { PieChart } from "react-chartkick";
 import "chartkick/chart.js";
 import "./home.css";
 import Auth from "../../utils/auth";
 import "reactjs-popup/dist/index.css";
 import { useQuery } from "@apollo/client";
 import { QUERY_ME } from "../../utils/queries";
-import CurrentBudget from "../../components/CurrentBudget";
+import CurrentBudget from "../../components/CurrentBudget/CurrentBudget"
 
 const Home = () => {
   const { loading, data } = useQuery(QUERY_ME);
   const user = data?.me || [];
-  // console.log(user);
-  // const budgets = user.budgets;
-  // console.log(budgets);
   
   if (loading) {
     return <div>Loading... </div>;
@@ -49,7 +45,6 @@ const Home = () => {
   }
   return (
     <>
-      {/* <h2>Home</h2> */}
       <div id="card-container">
         <Card></Card>
       </div>

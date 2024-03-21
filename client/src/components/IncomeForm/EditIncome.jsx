@@ -1,7 +1,7 @@
 // imports
 import { useMutation } from "@apollo/client";
 import { useState } from "react";
-import { UPDATE_INCOME } from "../utils/mutations";
+import { UPDATE_INCOME } from "../../utils/mutations";
 import DeleteIncome from "./DeleteIncome";
 
 // passes income and budget from the viewBudget.jsx

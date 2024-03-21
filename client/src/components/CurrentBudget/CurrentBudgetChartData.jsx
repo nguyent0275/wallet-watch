@@ -1,11 +1,11 @@
 import { useQuery } from "@apollo/client";
-import { QUERY_ALL_CATEGORIES } from "../utils/queries";
+import { QUERY_ALL_CATEGORIES } from "../../utils/queries";
 import { LineChart, PieChart } from 'react-chartkick'
 import { useState } from "react";
 import CategoryDataTable from "./CategoryTableData";
 
 // getting budget from CurrentBudget.jsx
-const ChartData = (budget) => {
+const CurrentBudgetChartData = (budget) => {
   const expenseArray = budget.budget.expenses;
   const { loading, data } = useQuery(QUERY_ALL_CATEGORIES);
   const categories = data?.categories || [];
@@ -170,4 +170,4 @@ const ChartData = (budget) => {
     </>
   );
 };
-export default ChartData;
+export default CurrentBudgetChartData;

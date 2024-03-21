@@ -1,6 +1,6 @@
 import { useQuery } from "@apollo/client";
-import { QUERY_CURRENT_BUDGET } from "../utils/queries";
-import ChartData from "./ChartData";
+import { QUERY_CURRENT_BUDGET } from "../../utils/queries";
+import CurrentBudgetChartData from "./CurrentBudgetChartData"
 
 // getting user from Home.jsx
 const CurrentBudget = (user) => {
@@ -66,7 +66,7 @@ const CurrentBudget = (user) => {
   }
   return (
     <>
-      <ChartData budget={currentMonthData} />
+      <CurrentBudgetChartData budget={currentMonthData} />
     </>
   );
 };

@@ -1,7 +1,7 @@
 import { useMutation } from "@apollo/client";
 import { ADD_BUDGET } from "../../utils/mutations";
-import MonthOptions from "../MonthOptions";
-import YearOptions from "../YearOptions";
+import MonthOptions from "../Dropdowns/MonthOptions";
+import YearOptions from "../Dropdowns/YearOptions";
 
 // userId is being passed from the SingleProfile.jsx
 const BudgetForm = ({ userId }) => {

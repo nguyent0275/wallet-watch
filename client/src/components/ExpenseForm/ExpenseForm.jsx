@@ -3,7 +3,7 @@ import { useQuery, useMutation } from "@apollo/client";
 import { useState } from "react";
 import { QUERY_ALL_CATEGORIES } from "../../utils/queries";
 import { ADD_EXPENSE } from "../../utils/mutations";
-import CategoryOptions from "../CategoryOptions";
+import CategoryOptions from "../Dropdowns/CategoryOptions";
 
 // budgetId is being pased from the viewBudget page
 const ExpenseForm = ({ budgetId }) => {
