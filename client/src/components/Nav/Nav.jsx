@@ -6,17 +6,6 @@ import "./nav.css";
 
 // navbar component loads on every page
 function Nav() {
-  // const styles = {
-  //   navbar: {
-  //     background: "black",
-  //     color: "green",
-  //   },
-  //   text: {
-  //     paddingLeft: '30px',
-  //     paddingRight: '30px',
-  //   },
-  // };
-
   function showNavigation() {
     // if user is logged in, return MyProfile, Home, and Logout
     if (Auth.loggedIn()) {
@@ -57,7 +46,7 @@ function Nav() {
 
   return (
     <header className="flex-row px-1">
-        <img src={logo} alt="logo" />
+      <a href="/"><img src={logo} alt="logo" /></a>
       <nav>{showNavigation()}</nav>
     </header>
   );

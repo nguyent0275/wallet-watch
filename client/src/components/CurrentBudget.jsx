@@ -2,6 +2,7 @@ import { useQuery } from "@apollo/client";
 import { QUERY_CURRENT_BUDGET } from "../utils/queries";
 import ChartData from "./ChartData";
 
+// getting user from Home.jsx
 const CurrentBudget = (user) => {
   const userId = user.user._id;
   const currentMonthIndex = new Date().getMonth();
@@ -50,7 +51,7 @@ const CurrentBudget = (user) => {
       break;
   }
 
-//   queries budget data based on the logged in user and the current month and year
+  //queries budget data based on the logged in user and the current month and year
   const { loading, data } = useQuery(QUERY_CURRENT_BUDGET, {
     variables: {
       userId: userId,
@@ -58,7 +59,7 @@ const CurrentBudget = (user) => {
       budgetYear: currentYear,
     },
   });
-  const currentMonthData = data?.currentMonthBudget
+  const currentMonthData = data?.currentMonthBudget;
 
   if (loading) {
     return <div>Loading... </div>;
