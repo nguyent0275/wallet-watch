@@ -70,10 +70,11 @@ const ChartData = (budget) => {
 
   // filters out only the unique dates
   const uniqueDateArray = [...new Set(expenseDateArray)];
-  console.log(uniqueDateArray);
 
+  // empty array of objects
   const dateArrayOfObjects = [];
 
+  // creates an object that contains a unique date, total, and expenses array
   for (let i = 0; i < uniqueDateArray.length; i++) {
     var uniqueDate = uniqueDateArray[i];
     let dateObject = {
@@ -83,19 +84,17 @@ const ChartData = (budget) => {
     };
     dateArrayOfObjects.push(dateObject);
   }
-  console.log(dateArrayOfObjects);
 
-  console.log(expenseArray);
+  // creates an expense object for each object containing name and cost
   for (let i = 0; i < expenseArray.length; i++) {
     let expenseDate = expenseArray[i].date;
-    console.log(expenseDate);
     let expenseObject = {
       expenseName: expenseArray[i].name,
       expenseCost: expenseArray[i].cost,
     };
+    // appends the expense object to the corresponding matching date object
+    // also totals all the expenses for that date and adds it to the date object
     for (let j = 0; j < dateArrayOfObjects.length; j++) {
-      console.log(expenseDate);
-      console.log(dateArrayOfObjects[j].date);
       if (expenseDate === dateArrayOfObjects[j].date) {
         dateArrayOfObjects[j].total =
           dateArrayOfObjects[j].total + expenseArray[i].cost;
@@ -104,16 +103,18 @@ const ChartData = (budget) => {
     }
   }
 
-  console.log(dateArrayOfObjects);
-
+  // setting empty arrays for formatting date for Line Chart
+  // line chart takes an object instead of an array of arrays
   let dateArray = [];
   let costArray = [];
 
+  // formats the dates and totals under each array
   for (let i = 0; i < dateArrayOfObjects.length; i++) {
     dateArray.push(dateArrayOfObjects[i].date);
     costArray.push(dateArrayOfObjects[i].total);
   }
 
+  // adds the formated data to the object 
   let lineChartData = {};
   for (let i = 0; i < dateArrayOfObjects.length; i++) {
     let key = dateArray[i];
@@ -122,19 +123,20 @@ const ChartData = (budget) => {
     lineChartData[key] = value;
   }
 
-  console.log(lineChartData)
-
+  // set a toggle state on a button to switch between viewing by category or date
   const [isToggled, setToggle] = useState(true);
 
+  // on click will turn true => false OR false => true
   const handleToggle = () => {
     setToggle(!isToggled);
   };
 
-  // conditional rendering
+  // conditional rendering (waiting for queries to run)
   if (loading) {
     return <div>Loading... </div>;
   }
 
+  // true === PieChart / Categories
   if (isToggled) {
     return (
       <>
@@ -152,6 +154,7 @@ const ChartData = (budget) => {
     );
   }
 
+  // false === LineChart / Daily Spending
   return (
     <>
       <h4>Total Monthly Income</h4>
